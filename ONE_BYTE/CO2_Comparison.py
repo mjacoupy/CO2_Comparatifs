@@ -173,7 +173,7 @@ elif analysis == "Comparatifs":
 
     col1, col2 = st.columns(2)
     with col1:
-        weight = st.number_input("Consommation quotidienne de données (GB)", step=1, min_value=0, value=1)
+        weight = st.number_input("Consommation quotidienne de données (GB)", step=0.1, min_value=0.0, value=1.0)
     with col2:
         life_time = st.slider("Age du matériel (années)", step=0.5, min_value=0.5, max_value=10.0, value=4.0)
     st.markdown("""---""")
