@@ -119,7 +119,7 @@ if analysis == "Consommation d'une page web":
             n = CONSO_MOBILE
 
         datacenter = weight * 1e6 * CONSO_DC_WORLD
-        reseau = weight * n
+        reseau = weight * 1e6 * n
         device = time * a
         consumption = datacenter+reseau+device
 
