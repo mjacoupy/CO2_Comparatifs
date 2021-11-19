@@ -158,7 +158,7 @@ elif analysis == "Comparatifs":
     with col2:
         life_time = st.slider("Durée de vie du matériel (années)", step=1, min_value=0, max_value=10, value=4)
     st.markdown("""---""")
-    st.markdown("Legend")
+    st.markdown("Légende (couleurs modifiables)")
     col1, col2, col3 = st.columns([2, 2, 4])
 
     with col1:
