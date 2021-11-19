@@ -4,6 +4,8 @@
 import streamlit as st
 from PIL import Image
 import matplotlib.pyplot as plt
+import seaborn as sns
+import textwrap
 
 
 # #######################################################################################################################
@@ -61,12 +63,12 @@ CONSO_MOBILE = 0.000000000884
 CONSO_ORDI = 0.000319415925165412
 CONSO_SMARTPHONE = 0.000107688797627196
 
-CONSO_DS_WORLD = 0.000000000072
+CONSO_DC_WORLD = 0.000000000072
 # Calculé
-CONSO_DS_EUROPE = RATIO_GCO2_KWH_EUROPE * CONSO_DS_WORLD / RATIO_GCO2_KWH_WORLD
-CONSO_DS_CHINE = RATIO_GCO2_KWH_CHINE * CONSO_DS_WORLD / RATIO_GCO2_KWH_WORLD
-CONSO_DS_USA = RATIO_GCO2_KWH_USA * CONSO_DS_WORLD / RATIO_GCO2_KWH_WORLD
-CONSO_DS_FRANCE = RATIO_GCO2_KWH_FRANCE * CONSO_DS_WORLD / RATIO_GCO2_KWH_WORLD
+CONSO_DC_EUROPE = RATIO_GCO2_KWH_EUROPE * CONSO_DC_WORLD / RATIO_GCO2_KWH_WORLD
+CONSO_DC_CHINE = RATIO_GCO2_KWH_CHINE * CONSO_DC_WORLD / RATIO_GCO2_KWH_WORLD
+CONSO_DC_USA = RATIO_GCO2_KWH_USA * CONSO_DC_WORLD / RATIO_GCO2_KWH_WORLD
+CONSO_DC_FRANCE = RATIO_GCO2_KWH_FRANCE * CONSO_DC_WORLD / RATIO_GCO2_KWH_WORLD
 
 
 
@@ -116,7 +118,7 @@ if analysis == "Consommation d'une page web":
         elif network == "Mobile":
             n = CONSO_MOBILE
 
-        datacenter = weight * 1e6 * CONSO_DS_WORLD
+        datacenter = weight * 1e6 * CONSO_DC_WORLD
         reseau = weight * n
         device = time * a
         consumption = datacenter+reseau+device
@@ -137,6 +139,18 @@ if analysis == "Consommation d'une page web":
             st.metric(label="Bilan Carbone", value=str(round(bilan, 3))+" gCO2e", delta=0)
         with col2:
             st.metric(label="Consommation électrique", value=str(round(consumption, 3))+" kWh", delta=0)
+
+        names = ['DATA CENTER', 'RESEAU', 'APPAREIL']
+        values = [datacenter, reseau, device]
+
+        barplot_4 = plt.figure(figsize=(6, 3.5))
+        ax = sns.barplot(names, values, palette='viridis')
+        ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
+                           rotation=60, fontsize=10, horizontalalignment="right")
+        ax.set_title("Repartition des consommations energétiques")
+        ax.set(xlabel=None)
+        ax.set_ylabel('kWh')
+        st.pyplot(barplot_4)
 
         # st.subheader("Si Data stockée dans le monde")
         # st.markdown('Bilan carbone par semaine : **'+str(round((bilan*5), 1))+"** gCO2e")
@@ -172,7 +186,7 @@ elif analysis == "Comparatifs":
     ratios = [RATIO_GCO2_KWH_WORLD, RATIO_GCO2_KWH_EUROPE, RATIO_GCO2_KWH_CHINE, RATIO_GCO2_KWH_USA, RATIO_GCO2_KWH_FRANCE]
     fabrications = [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE, FABRICATION_FIXE_ECRAN, SMARTPHONE]
 
-    datacenter = weight_byte * CONSO_DS_WORLD * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
+    datacenter = weight_byte * CONSO_DC_WORLD * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
     reseau = weight_byte * CONSO_WIFI * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
     device = CONSO_ORDI * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
 
