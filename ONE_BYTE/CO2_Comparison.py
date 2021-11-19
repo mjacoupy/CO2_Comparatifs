@@ -155,7 +155,7 @@ if analysis == "Consommation d'une page web":
             st.pyplot(barplot_1)
 
         with col2:
-            values = [datacenter * ratio, reseau * ratio, device * ratio]
+            values = [datacenter * RATIO_GCO2_KWH_WORLD, reseau * RATIO_GCO2_KWH_WORLD, device * ratio]
 
             barplot_2 = plt.figure(figsize=(6, 3.5))
             ax = sns.barplot(names, values, palette='viridis')
