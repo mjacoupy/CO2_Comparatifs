@@ -103,9 +103,9 @@ if analysis == "Consommation d'une page web":
     with col3:
         loc = st.radio("Ou sont stockées les données", ['Monde', 'Europe', 'Chine', 'USA', 'France'])
 
-    button = st.button("Analyse")
+    #button = st.button("Analyse")
 
-    if weight and time and button:
+    if weight and time:
         if appareil == "Smartphone":
             a = CONSO_SMARTPHONE
         elif appareil in ['Laptop', 'Laptop + Ecran', 'Ordinateur Fixe + Ecran']:
