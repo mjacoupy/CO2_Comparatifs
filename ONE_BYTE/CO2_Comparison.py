@@ -156,7 +156,7 @@ elif analysis == "Comparatifs":
     with col1:
         weight = st.number_input("Consommation quotidienne de données (GB)", step=1, min_value=0, value=1)
     with col2:
-        life_time = st.slider("Durée de vie du matériel (années)", step=1, min_value=0, max_value=10, value=4)
+        life_time = st.slider("Durée de vie du matériel (années)", step=0.5, min_value=0.5, max_value=10.0, value=4.0)
     st.markdown("""---""")
     st.markdown("Légende (couleurs modifiables)")
     col1, col2, col3 = st.columns([2, 2, 4])
