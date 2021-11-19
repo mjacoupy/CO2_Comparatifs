@@ -103,8 +103,6 @@ if analysis == "Consommation d'une page web":
     with col3:
         loc = st.radio("Ou sont stockées les données", ['Monde', 'Europe', 'Chine', 'USA', 'France'])
 
-    #button = st.button("Analyse")
-
     if weight and time:
         if appareil == "Smartphone":
             a = CONSO_SMARTPHONE
@@ -124,15 +122,16 @@ if analysis == "Consommation d'une page web":
         consumption = datacenter+reseau+device
 
         if loc == "Monde":
-            bilan = consumption * RATIO_GCO2_KWH_WORLD
+            ratio = RATIO_GCO2_KWH_WORLD
         elif loc == "Europe":
-            bilan = consumption * RATIO_GCO2_KWH_EUROPE
+            ratio = RATIO_GCO2_KWH_EUROPE
         elif loc == "USA":
-            bilan = consumption * RATIO_GCO2_KWH_USA
+            ratio = RATIO_GCO2_KWH_USA
         elif loc == "Chine":
-            bilan = consumption * RATIO_GCO2_KWH_CHINE
+            ratio = RATIO_GCO2_KWH_CHINE
         elif loc == "France":
-            bilan = consumption * RATIO_GCO2_KWH_FRANCE
+            ratio = RATIO_GCO2_KWH_FRANCE
+        bilan = consumption * ratio
         st.markdown("""---""")
         col1, col2 = st.columns(2)
         with col1:
@@ -141,17 +140,31 @@ if analysis == "Consommation d'une page web":
             st.metric(label="Consommation électrique", value=str(round(consumption, 3))+" kWh", delta=0)
 
         names = ['DATA CENTER', 'RESEAU', 'APPAREIL']
-        values = [datacenter, reseau, device]
 
-        barplot_4 = plt.figure(figsize=(6, 3.5))
-        ax = sns.barplot(names, values, palette='viridis')
-        ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
-                           rotation=60, fontsize=10, horizontalalignment="right")
-        ax.set_title("Repartition des consommations energétiques")
-        ax.set(xlabel=None)
-        ax.set_ylabel('kWh')
-        st.pyplot(barplot_4)
+        col1, col2 = st.columns(2)
+        with col1:
+            values = [datacenter, reseau, device]
 
+            barplot_1 = plt.figure(figsize=(6, 3.5))
+            ax = sns.barplot(names, values, palette='viridis')
+            ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
+                               rotation=60, fontsize=10, horizontalalignment="right")
+            ax.set_title("Repartition des consommations energétiques")
+            ax.set(xlabel=None)
+            ax.set_ylabel('kWh')
+            st.pyplot(barplot_1)
+
+        with col2:
+            values = [datacenter * ratio, reseau * ratio, device * ratio]
+
+            barplot_2 = plt.figure(figsize=(6, 3.5))
+            ax = sns.barplot(names, values, palette='viridis')
+            ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
+                               rotation=60, fontsize=10, horizontalalignment="right")
+            ax.set_title("Repartition des emission de CO2")
+            ax.set(xlabel=None)
+            ax.set_ylabel('gCOEe')
+            st.pyplot(barplot_2)
         # st.subheader("Si Data stockée dans le monde")
         # st.markdown('Bilan carbone par semaine : **'+str(round((bilan*5), 1))+"** gCO2e")
         # st.markdown('Bilan carbone par an : **'+str(round((bilan*5*47/1000), 1))+"** kgCO2e")
