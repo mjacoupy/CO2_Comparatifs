@@ -165,6 +165,7 @@ if analysis == "Consommation d'une page web":
             ax.set(xlabel=None)
             ax.set_ylabel('gCOEe')
             st.pyplot(barplot_2)
+            st.markdown(ratio)
         # st.subheader("Si Data stockée dans le monde")
         # st.markdown('Bilan carbone par semaine : **'+str(round((bilan*5), 1))+"** gCO2e")
         # st.markdown('Bilan carbone par an : **'+str(round((bilan*5*47/1000), 1))+"** kgCO2e")
