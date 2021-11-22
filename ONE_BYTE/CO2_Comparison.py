@@ -42,9 +42,9 @@ SEMAINE_PAR_AN = 47
 
 # From ADEME
 FABRICATION_LAPTOP = 156
-FABRICATION_FIXE = 296
 FABRICATION_LAPTOP_ECRAN = 156 + 336
-FABRICATION_FIXE_ECRAN = 296 + 336
+FABRICATION_FIXE_ECRAN17 = 296 + 336
+FABRICATION_FIXE_ECRAN24 = 296 + 431
 FABRICATION_SMARTPHONE = 39.1
 
 # From Carbonalyser (1 kWh -> 1 gCO2)
@@ -198,7 +198,7 @@ elif analysis == "Comparatifs":
     weight_byte = weight*1e9
 
     ratios = [RATIO_GCO2_KWH_FRANCE, RATIO_GCO2_KWH_EUROPE, RATIO_GCO2_KWH_WORLD, RATIO_GCO2_KWH_USA, RATIO_GCO2_KWH_CHINE]
-    fabrications = [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE, FABRICATION_FIXE_ECRAN, FABRICATION_SMARTPHONE]
+    fabrications = [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE_ECRAN17, FABRICATION_FIXE_ECRAN24, FABRICATION_SMARTPHONE]
 
     reseau = weight_byte * CONSO_WIFI * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
     datacenter = weight_byte * CONSO_DC_WORLD * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
@@ -206,13 +206,13 @@ elif analysis == "Comparatifs":
 
     col0, col1, col2, col3, col4, col5 = st.columns(6)
     with col1:
-        st.markdown("**LAPTOP**")
+        st.markdown("**LAPTOP SEUL**")
     with col2:
         st.markdown('**LAPTOP + ECRAN 17"**')
     with col3:
-        st.markdown("**ORDI FIXE**")
-    with col4:
         st.markdown('**ORDI FIXE + ECRAN 17"**')
+    with col4:
+        st.markdown('**ORDI FIXE + ECRAN 24"**')
     with col5:
         st.markdown('**SMARTPHONE >5,5"**')
 
@@ -233,10 +233,10 @@ elif analysis == "Comparatifs":
             camembert(iRatio, datacenter, reseau, device, FABRICATION_LAPTOP_ECRAN, color1, color2)
     with col3:
         for iRatio in ratios:
-            camembert(iRatio, datacenter, reseau, device, FABRICATION_FIXE, color1, color2)
+            camembert(iRatio, datacenter, reseau, device, FABRICATION_FIXE_ECRAN17, color1, color2)
     with col4:
         for iRatio in ratios:
-            camembert(iRatio, datacenter, reseau, device, FABRICATION_FIXE_ECRAN, color1, color2)
+            camembert(iRatio, datacenter, reseau, device, FABRICATION_FIXE_ECRAN24, color1, color2)
     with col5:
         for iRatio in ratios:
             camembert(iRatio, datacenter, reseau, device, FABRICATION_SMARTPHONE, color1, color2)
