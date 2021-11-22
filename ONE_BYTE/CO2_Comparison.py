@@ -104,7 +104,7 @@ if analysis == "Consommation d'une page web":
         appareil = st.radio("Type d'appareil", ['Laptop', 'Laptop + Ecran', 'Ordinateur Fixe + Ecran', 'Smartphone'])
         network = st.radio("Type de réseau", ['WIFI', 'Ethernet', "Mobile"])
     with col3:
-        loc = st.radio("Ou sont stockées les données", ['France', 'Europe', 'Allemagne', 'Monde', 'USA', 'Chine'])
+        loc = st.radio("Lieu de travail", ['France', 'Europe', 'Allemagne', 'Monde', 'USA', 'Chine'])
 
     if weight and time:
         if appareil == "Smartphone":
