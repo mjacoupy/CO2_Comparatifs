@@ -185,7 +185,7 @@ elif analysis == "Comparatifs":
     with col2:
         color2 = st.color_picker("Hardware", '#fcba28')
     with col4:
-        r = st.radio("Quel type réseau ?", ["WIFI, Ethernet"])
+        r = st.radio("Quel type réseau ?", ["WIFI", "Ethernet"])
     st.markdown("""---""")
     # Comparatif des types
     weight_byte = weight*1e9
