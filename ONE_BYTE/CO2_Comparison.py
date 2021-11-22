@@ -178,12 +178,14 @@ elif analysis == "Comparatifs":
         life_time = st.slider("Age du matériel (années)", step=0.5, min_value=0.5, max_value=10.0, value=4.0)
     st.markdown("""---""")
     st.markdown("Légende (couleurs modifiables)")
-    col1, col2, col3 = st.columns([2, 2, 4])
+    col1, col2, col3, col4 = st.columns([2, 2, 4, 2])
 
     with col1:
         color1 = st.color_picker("Consommation", '#250044')
     with col2:
         color2 = st.color_picker("Hardware", '#fcba28')
+    with col4:
+        r = st.radio("Quel type réseau ?", ["WIFI, Ethernet"])
     st.markdown("""---""")
     # Comparatif des types
     weight_byte = weight*1e9
@@ -191,8 +193,13 @@ elif analysis == "Comparatifs":
     ratios = [RATIO_GCO2_KWH_WORLD, RATIO_GCO2_KWH_EUROPE, RATIO_GCO2_KWH_CHINE, RATIO_GCO2_KWH_USA, RATIO_GCO2_KWH_FRANCE]
     fabrications = [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE, FABRICATION_FIXE_ECRAN, SMARTPHONE]
 
+
+    if r == "WIFI":
+        conso = CONSO_WIFI
+    else:
+        conso = CONSO_ETHERNET
+    reseau = weight_byte * conso * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
     datacenter = weight_byte * CONSO_DC_WORLD * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
-    reseau = weight_byte * CONSO_WIFI * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
     device = CONSO_ORDI * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
 
     col0, col1, col2, col3, col4, col5 = st.columns(6)
