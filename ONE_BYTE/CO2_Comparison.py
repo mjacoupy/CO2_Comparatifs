@@ -225,10 +225,15 @@ elif analysis == "Comparatifs":
         st.image(france)
         st.markdown("Valeurs")
         st.image(europe)
+        st.markdown("Valeurs")
         st.image(allemagne)
+        st.markdown("Valeurs")
         st.image(terre)
+        st.markdown("Valeurs")
         st.image(usa)
+        st.markdown("Valeurs")
         st.image(chine)
+        st.markdown("Valeurs")
 
     with col1:
         for iRatio in ratios:
@@ -237,15 +242,19 @@ elif analysis == "Comparatifs":
     with col2:
         for iRatio in ratios:
             camembert(iRatio, datacenter, reseau, device, FABRICATION_LAPTOP_ECRAN, color1, color2)
+            st.markdown(str(sizes))
     with col3:
         for iRatio in ratios:
             camembert(iRatio, datacenter, reseau, device, FABRICATION_FIXE_ECRAN17, color1, color2)
+            st.markdown(str(sizes))
     with col4:
         for iRatio in ratios:
             camembert(iRatio, datacenter, reseau, device, FABRICATION_FIXE_PUISSANT_ECRAN24, color1, color2)
+            st.markdown(str(sizes))
     with col5:
         for iRatio in ratios:
             camembert(iRatio, datacenter, reseau, device, FABRICATION_SMARTPHONE, color1, color2)
+            st.markdown(str(sizes))
 
 # #######################################################################################################################
 
