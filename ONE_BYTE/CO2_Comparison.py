@@ -15,11 +15,7 @@ def side_bar():
     """..."""
     end = '<p style="font-family:Avenir; font-weight:bold; color:#FCBA28; font-size:12px; ">©2021 Positive Thinking Company et/ou ses affiliés. Tous droits réservés. Produit par le PTC Tech Lab.</p>'
     st.sidebar.markdown("""---""")
-    try:
-        st.sidebar.image(image1, width=50)
-    except Exception as e:
-        pass
-
+    st.sidebar.image(image1, width=50)
     st.sidebar.markdown(end, unsafe_allow_html=True)
 
 
@@ -223,7 +219,6 @@ elif analysis == "Comparatifs":
         st.image(terre)
         st.image(usa)
         st.image(chine)
-
 
     with col1:
         for iRatio in ratios:
