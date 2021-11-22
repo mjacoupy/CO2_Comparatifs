@@ -222,18 +222,9 @@ elif analysis == "Comparatifs":
 
     col0, col1, col2, col3, col4, col5 = st.columns(6)
     with col0:
-        st.image(france)
-        st.markdown("Valeurs")
-        st.image(europe)
-        st.markdown("Valeurs")
-        st.image(allemagne)
-        st.markdown("Valeurs")
-        st.image(terre)
-        st.markdown("Valeurs")
-        st.image(usa)
-        st.markdown("Valeurs")
-        st.image(chine)
-        st.markdown("Valeurs")
+        for iRegion in [france, europe, allemagne, terre, usa, chine]:
+            st.image(iRegion)
+            st.markdown("Valeurs (kgCO2e)")
 
     with col1:
         for iRatio in ratios:
