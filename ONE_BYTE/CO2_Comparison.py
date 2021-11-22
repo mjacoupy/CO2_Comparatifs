@@ -28,6 +28,7 @@ def camembert(iratio, datacenter, reseau, device, appareil, color1, color2):
     plt.axis('equal')
     plt.tight_layout()
     plt.show()
+    st.title(str(sizes))
     st.pyplot(pie)
 
 # #######################################################################################################################
@@ -222,6 +223,7 @@ elif analysis == "Comparatifs":
     col0, col1, col2, col3, col4, col5 = st.columns(6)
     with col0:
         st.image(france)
+        st.markdown("Valeurs")
         st.image(europe)
         st.image(allemagne)
         st.image(terre)
@@ -243,3 +245,14 @@ elif analysis == "Comparatifs":
     with col5:
         for iRatio in ratios:
             camembert(iRatio, datacenter, reseau, device, FABRICATION_SMARTPHONE, color1, color2)
+
+# #######################################################################################################################
+
+#                                          # === END OF FILE === #
+
+# #######################################################################################################################
+
+# Carbonalyser
+#
+
+
