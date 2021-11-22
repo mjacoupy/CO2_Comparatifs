@@ -35,20 +35,19 @@ def camembert(iratio, datacenter, reseau, device, appareil, color1, color2):
     st.pyplot(pie)
 
 # #######################################################################################################################
-#                                              # === CONSTANTS === #
+#                                              # === CONSTANTES === #
 # #######################################################################################################################
+JOURS_PAR_SEMAINE = 5
+SEMAINE_PAR_AN = 52
 
 # From ADEME
 FABRICATION_LAPTOP = 156
 FABRICATION_FIXE = 296
 FABRICATION_LAPTOP_ECRAN = 156 + 300
 FABRICATION_FIXE_ECRAN = 296 + 300
-SMARTPHONE = 30
+FABRICATION_SMARTPHONE = 30
 
-JOURS_PAR_SEMAINE = 5
-SEMAINE_PAR_AN = 52
-
-# From Carbonalyser
+# From Carbonalyser (1 kWh -> 1 gCO2)
 RATIO_GCO2_KWH_WORLD = 519
 RATIO_GCO2_KWH_EUROPE = 276
 RATIO_GCO2_KWH_CHINE = 681
@@ -60,7 +59,8 @@ CONSO_ETHERNET = 0.000000000429
 CONSO_WIFI = 0.000000000152
 CONSO_MOBILE = 0.000000000884
 
-CONSO_ORDI = 0.000319415925165412
+CONSO_LAPTOP = 0.000319415925165412
+CONSO_FIXE = None
 CONSO_SMARTPHONE = 0.000107688797627196
 
 CONSO_DC_WORLD = 0.000000000072
@@ -103,25 +103,25 @@ if analysis == "Consommation d'une page web":
         appareil = st.radio("Type d'appareil", ['Laptop', 'Laptop + Ecran', 'Ordinateur Fixe + Ecran', 'Smartphone'])
         network = st.radio("Type de réseau", ['WIFI', 'Ethernet', "Mobile"])
     with col3:
-        loc = st.radio("Ou sont stockées les données", ['Monde', 'Europe', 'Chine', 'USA', 'France'])
+        loc = st.radio("Ou sont stockées les données", ['France', 'Europe', 'Monde', 'USA', 'Chine'])
 
     if weight and time:
         if appareil == "Smartphone":
-            a = CONSO_SMARTPHONE
+            conso_appareil = CONSO_SMARTPHONE
         elif appareil in ['Laptop', 'Laptop + Ecran', 'Ordinateur Fixe + Ecran']:
-            a = CONSO_ORDI
+            conso_appareil = CONSO_LAPTOP
 
         if network == "Ethernet":
-            n = CONSO_ETHERNET
+            conso_network = CONSO_ETHERNET
         elif network == "WIFI":
-            n = CONSO_WIFI
+            conso_network = CONSO_WIFI
         elif network == "Mobile":
-            n = CONSO_MOBILE
+            conso_network = CONSO_MOBILE
 
         datacenter = weight * 1e6 * CONSO_DC_WORLD
-        reseau = weight * 1e6 * n
-        device = time * a
-        consumption = datacenter+reseau+device
+        reseau = weight * 1e6 * conso_network
+        device = time * conso_appareil
+        consommation_totale = datacenter + reseau + device
 
         if loc == "Monde":
             ratio = RATIO_GCO2_KWH_WORLD
@@ -133,14 +133,17 @@ if analysis == "Consommation d'une page web":
             ratio = RATIO_GCO2_KWH_CHINE
         elif loc == "France":
             ratio = RATIO_GCO2_KWH_FRANCE
-        bilan = consumption * ratio
+        bilan = consommation_totale * ratio
         st.markdown("""---""")
+
+        # Metrics
         col1, col2 = st.columns(2)
         with col1:
             st.metric(label="Bilan Carbone", value=str(round(bilan, 3))+" gCO2e", delta=0)
         with col2:
-            st.metric(label="Consommation électrique", value=str(round(consumption, 3))+" kWh", delta=0)
+            st.metric(label="Consommation électrique", value=str(round(consommation_totale, 3))+" kWh", delta=0)
 
+        # Plots
         names = ['DATA CENTER', 'RESEAU', 'APPAREIL']
 
         col1, col2 = st.columns(2)
@@ -184,7 +187,7 @@ elif analysis == "Comparatifs":
         st.write("[Lien vers la page de calculs](https://www.orange.ma/Offres-services/Simulateur)")
     st.markdown("""---""")
     st.markdown("Légende (couleurs modifiables)")
-    col1, col2, col3= st.columns([2, 2, 6])
+    col1, col2, col3 = st.columns([2, 2, 6])
 
     with col1:
         color1 = st.color_picker("Consommation", '#250044')
@@ -194,12 +197,12 @@ elif analysis == "Comparatifs":
     # Comparatif des types
     weight_byte = weight*1e9
 
-    ratios = [RATIO_GCO2_KWH_WORLD, RATIO_GCO2_KWH_EUROPE, RATIO_GCO2_KWH_CHINE, RATIO_GCO2_KWH_USA, RATIO_GCO2_KWH_FRANCE]
-    fabrications = [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE, FABRICATION_FIXE_ECRAN, SMARTPHONE]
+    ratios = [RATIO_GCO2_KWH_FRANCE, RATIO_GCO2_KWH_EUROPE, RATIO_GCO2_KWH_WORLD, RATIO_GCO2_KWH_USA, RATIO_GCO2_KWH_CHINE]
+    fabrications = [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE, FABRICATION_FIXE_ECRAN, FABRICATION_SMARTPHONE]
 
     reseau = weight_byte * CONSO_WIFI * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
     datacenter = weight_byte * CONSO_DC_WORLD * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
-    device = CONSO_ORDI * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
+    device = CONSO_LAPTOP * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
 
     col0, col1, col2, col3, col4, col5 = st.columns(6)
     with col1:
@@ -215,11 +218,13 @@ elif analysis == "Comparatifs":
 
     col0, col1, col2, col3, col4, col5 = st.columns(6)
     with col0:
-        st.image(terre)
-        st.image(europe)
-        st.image(chine)
-        st.image(usa)
         st.image(france)
+        st.image(europe)
+        st.image(terre)
+        st.image(usa)
+        st.image(chine)
+
+
     with col1:
         for iRatio in ratios:
             camembert(iRatio, datacenter, reseau, device, FABRICATION_LAPTOP, color1, color2)
@@ -234,4 +239,4 @@ elif analysis == "Comparatifs":
             camembert(iRatio, datacenter, reseau, device, FABRICATION_FIXE_ECRAN, color1, color2)
     with col5:
         for iRatio in ratios:
-            camembert(iRatio, datacenter, reseau, device, SMARTPHONE, color1, color2)
+            camembert(iRatio, datacenter, reseau, device, FABRICATION_SMARTPHONE, color1, color2)
