@@ -45,10 +45,14 @@ FABRICATION_SMARTPHONE = 39.1
 
 # From Carbonalyser (1 kWh -> 1 gCO2)
 RATIO_GCO2_KWH_WORLD = 519
-RATIO_GCO2_KWH_EUROPE = 276
 RATIO_GCO2_KWH_CHINE = 681
 RATIO_GCO2_KWH_USA = 493
-RATIO_GCO2_KWH_FRANCE = 35
+# from https://www.edf.fr/groupe-edf/agir-en-entreprise-responsable/rapports-et-indicateurs/emissions-de-gaz-a-effet-de-serre (2021)
+RATIO_GCO2_KWH_FRANCE = 22.25
+# from https://www.eea.europa.eu/data-and-maps/daviz/co2-emission-intensity-9/download.table (2020)
+RATIO_GCO2_KWH_EUROPE = 256
+RATIO_GCO2_KWH_ALLEMAGNE = 311
+
 
 # From One-byte_model
 CONSO_ETHERNET = 0.000000000429
@@ -77,6 +81,7 @@ europe = Image.open("app_logos/Europe.jpg")
 usa = Image.open("app_logos/USA.jpg")
 chine = Image.open("app_logos/Chine.png")
 france = Image.open("app_logos/France.png")
+allemagne = Image.open("app_logos/Allemagne.png")
 terre = Image.open("app_logos/Terre.png")
 base_conso = Image.open("app_logos/Conso.png")
 base_conso2 = Image.open("app_logos/Conso2.png")
@@ -193,7 +198,7 @@ elif analysis == "Comparatifs":
     # Comparatif des types
     weight_byte = weight*1e9
 
-    ratios = [RATIO_GCO2_KWH_FRANCE, RATIO_GCO2_KWH_EUROPE, RATIO_GCO2_KWH_WORLD, RATIO_GCO2_KWH_USA, RATIO_GCO2_KWH_CHINE]
+    ratios = [RATIO_GCO2_KWH_FRANCE, RATIO_GCO2_KWH_EUROPE, RATIO_GCO2_KWH_ALLEMAGNE, RATIO_GCO2_KWH_WORLD, RATIO_GCO2_KWH_USA, RATIO_GCO2_KWH_CHINE]
     fabrications = [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE_ECRAN17, FABRICATION_FIXE_PUISSANT_ECRAN24, FABRICATION_SMARTPHONE]
 
     reseau = weight_byte * CONSO_WIFI * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
@@ -216,6 +221,7 @@ elif analysis == "Comparatifs":
     with col0:
         st.image(france)
         st.image(europe)
+        st.image(allemagne)
         st.image(terre)
         st.image(usa)
         st.image(chine)
