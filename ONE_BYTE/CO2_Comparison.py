@@ -214,6 +214,7 @@ elif analysis == "Comparatifs":
 
     col0, col1, col2, col3, col4, col5 = st.columns(6)
     with col0:
+        st.markdown("""---""")
         st.image(france)
         st.markdown("""---""")
         st.image(europe)
@@ -227,22 +228,27 @@ elif analysis == "Comparatifs":
 
     with col1:
         for iRatio in ratios:
+            st.markdown("""---""")
             camembert(iRatio, datacenter, reseau, device, FABRICATION_LAPTOP, color1, color2)
             st.markdown("""---""")
     with col2:
         for iRatio in ratios:
+            st.markdown("""---""")
             camembert(iRatio, datacenter, reseau, device, FABRICATION_LAPTOP_ECRAN, color1, color2)
             st.markdown("""---""")
     with col3:
         for iRatio in ratios:
+            st.markdown("""---""")
             camembert(iRatio, datacenter, reseau, device, FABRICATION_FIXE_ECRAN17, color1, color2)
             st.markdown("""---""")
     with col4:
         for iRatio in ratios:
+            st.markdown("""---""")
             camembert(iRatio, datacenter, reseau, device, FABRICATION_FIXE_PUISSANT_ECRAN24, color1, color2)
-            st.markdown("""---"""   )
+            st.markdown("""---""")
     with col5:
         for iRatio in ratios:
+            st.markdown("""---""")
             camembert(iRatio, datacenter, reseau, device, FABRICATION_SMARTPHONE, color1, color2)
             st.markdown("""---""")
 
