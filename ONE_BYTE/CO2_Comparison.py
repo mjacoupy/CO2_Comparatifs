@@ -199,12 +199,7 @@ elif analysis == "Comparatifs":
     ratios = [RATIO_GCO2_KWH_WORLD, RATIO_GCO2_KWH_EUROPE, RATIO_GCO2_KWH_CHINE, RATIO_GCO2_KWH_USA, RATIO_GCO2_KWH_FRANCE]
     fabrications = [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE, FABRICATION_FIXE_ECRAN, SMARTPHONE]
 
-
-    if r == "WIFI":
-        conso = CONSO_WIFI
-    else:
-        conso = CONSO_ETHERNET
-    reseau = weight_byte * conso * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
+    reseau = weight_byte * CONSO_WIFI * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
     datacenter = weight_byte * CONSO_DC_WORLD * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
     device = CONSO_ORDI * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
 
