@@ -184,14 +184,12 @@ elif analysis == "Comparatifs":
         st.write("[Lien vers la page de calculs](https://www.orange.ma/Offres-services/Simulateur)")
     st.markdown("""---""")
     st.markdown("Légende (couleurs modifiables)")
-    col1, col2, col3, col4 = st.columns([2, 2, 4, 2])
+    col1, col2, col3= st.columns([2, 2, 6])
 
     with col1:
         color1 = st.color_picker("Consommation", '#250044')
     with col2:
         color2 = st.color_picker("Hardware", '#fcba28')
-    with col4:
-        r = st.radio("Quel type réseau ?", ["WIFI", "Ethernet"])
     st.markdown("""---""")
     # Comparatif des types
     weight_byte = weight*1e9
