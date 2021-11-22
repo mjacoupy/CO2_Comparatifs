@@ -38,14 +38,14 @@ def camembert(iratio, datacenter, reseau, device, appareil, color1, color2):
 #                                              # === CONSTANTES === #
 # #######################################################################################################################
 JOURS_PAR_SEMAINE = 5
-SEMAINE_PAR_AN = 52
+SEMAINE_PAR_AN = 47
 
 # From ADEME
 FABRICATION_LAPTOP = 156
 FABRICATION_FIXE = 296
-FABRICATION_LAPTOP_ECRAN = 156 + 300
-FABRICATION_FIXE_ECRAN = 296 + 300
-FABRICATION_SMARTPHONE = 30
+FABRICATION_LAPTOP_ECRAN = 156 + 336
+FABRICATION_FIXE_ECRAN = 296 + 336
+FABRICATION_SMARTPHONE = 39.1
 
 # From Carbonalyser (1 kWh -> 1 gCO2)
 RATIO_GCO2_KWH_WORLD = 519
@@ -208,13 +208,13 @@ elif analysis == "Comparatifs":
     with col1:
         st.markdown("**LAPTOP**")
     with col2:
-        st.markdown("**LAPTOP + ECRAN**")
+        st.markdown('**LAPTOP + ECRAN 17"**')
     with col3:
         st.markdown("**ORDI FIXE**")
     with col4:
-        st.markdown("**ORDI FIXE + ECRAN**")
+        st.markdown('**ORDI FIXE + ECRAN 17"**')
     with col5:
-        st.markdown("**SMARTPHONE**")
+        st.markdown('**SMARTPHONE >5.5"**')
 
     col0, col1, col2, col3, col4, col5 = st.columns(6)
     with col0:
