@@ -210,9 +210,9 @@ elif analysis == "Comparatifs":
     with col2:
         st.markdown("**LAPTOP + ECRAN**")
     with col3:
-        st.markdown("**FIXE**")
+        st.markdown("**ORDI FIXE**")
     with col4:
-        st.markdown("**FIXE + ECRAN**")
+        st.markdown("**ORDI FIXE + ECRAN**")
     with col5:
         st.markdown("**SMARTPHONE**")
 
