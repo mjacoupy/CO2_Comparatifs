@@ -214,7 +214,7 @@ elif analysis == "Comparatifs":
     with col4:
         st.markdown('**ORDI FIXE + ECRAN 17"**')
     with col5:
-        st.markdown('**SMARTPHONE >5.5"**')
+        st.markdown('**SMARTPHONE >5,5"**')
 
     col0, col1, col2, col3, col4, col5 = st.columns(6)
     with col0:
