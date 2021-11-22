@@ -178,7 +178,8 @@ elif analysis == "Comparatifs":
     with col2:
         life_time = st.slider("Age du matériel (années)", step=0.5, min_value=0.5, max_value=10.0, value=4.0)
     with st.expander("Base de calculs"):
-        st.image(base_conso)
+        st.image(base_conso
+        st.write("[Lien vers la page de calculs](https://www.orange.ma/Offres-services/Simulateur)")
     st.markdown("""---""")
     st.markdown("Légende (couleurs modifiables)")
     col1, col2, col3, col4 = st.columns([2, 2, 4, 2])
