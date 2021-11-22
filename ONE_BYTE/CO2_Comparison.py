@@ -224,7 +224,7 @@ elif analysis == "Comparatifs":
     with col0:
         for iRegion in [france, europe, allemagne, terre, usa, chine]:
             st.image(iRegion)
-            st.markdown("Valeurs (kgCO2e)")
+            st.markdown("(kgCO2e)")
 
     with col1:
         for iRatio in ratios:
@@ -246,6 +246,19 @@ elif analysis == "Comparatifs":
         for iRatio in ratios:
             sizes = camembert(iRatio, datacenter, reseau, device, FABRICATION_SMARTPHONE, color1, color2)
             st.markdown(str(sizes))
+
+    col0, col1, col2, col3, col4, col5 = st.columns(6)
+    with col0:
+        for iRegion in [france, europe, allemagne, terre, usa, chine]:
+            st.image(iRegion)
+            st.markdown("(kgCO2e)")
+
+    for iCol, iProduct in zip([col1, col2, col3, col4, col5], [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE_ECRAN17, FABRICATION_FIXE_PUISSANT_ECRAN24, FABRICATION_SMARTPHONE]):
+        with iCol:
+            for iRatio in ratios:
+                sizes = camembert(iRatio, datacenter, reseau, device, iProduct, color1, color2)
+                st.markdown(str(sizes))
+
 
 # #######################################################################################################################
 
