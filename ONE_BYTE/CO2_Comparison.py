@@ -203,57 +203,35 @@ elif analysis == "Comparatifs":
     col0, col1, col2, col3, col4, col5 = st.columns(6)
     with col1:
         st.markdown("**LAPTOP SEUL**")
-        st.markdown("""---""")
     with col2:
         st.markdown('**LAPTOP + ECRAN 17"**')
-        st.markdown("""---""")
     with col3:
         st.markdown('**FIXE CLASSIQUE + ECRAN 17"**')
-        st.markdown("""---""")
     with col4:
         st.markdown('**FIXE PUISSANT + ECRAN 24"**')
-        st.markdown("""---""")
     with col5:
         st.markdown('**SMARTPHONE >5,5"**')
-        st.markdown("""---""")
 
     col0, col1, col2, col3, col4, col5 = st.columns(6)
     with col0:
-        st.markdown("""---""")
         st.image(france)
-        st.markdown("""---""")
         st.image(europe)
-        st.markdown("""---""")
         st.image(terre)
-        st.markdown("""---""")
         st.image(usa)
-        st.markdown("""---""")
         st.image(chine)
-        st.markdown("""---""")
 
     with col1:
         for iRatio in ratios:
             camembert(iRatio, datacenter, reseau, device, FABRICATION_LAPTOP, color1, color2)
-            st.markdown("""---""")
     with col2:
         for iRatio in ratios:
             camembert(iRatio, datacenter, reseau, device, FABRICATION_LAPTOP_ECRAN, color1, color2)
-            st.markdown("""---""")
     with col3:
         for iRatio in ratios:
             camembert(iRatio, datacenter, reseau, device, FABRICATION_FIXE_ECRAN17, color1, color2)
-            st.markdown("""---""")
     with col4:
         for iRatio in ratios:
             camembert(iRatio, datacenter, reseau, device, FABRICATION_FIXE_PUISSANT_ECRAN24, color1, color2)
-            st.markdown("""---""")
     with col5:
         for iRatio in ratios:
             camembert(iRatio, datacenter, reseau, device, FABRICATION_SMARTPHONE, color1, color2)
-            st.markdown("""---""")
-
-
-# #######################################################################################################################
-#                                              # === ENF OF FILE === #
-# #######################################################################################################################
-
