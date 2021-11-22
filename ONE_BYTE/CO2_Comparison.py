@@ -104,7 +104,7 @@ if analysis == "Consommation d'une page web":
         appareil = st.radio("Type d'appareil", ['Laptop', 'Laptop + Ecran', 'Ordinateur Fixe + Ecran', 'Smartphone'])
         network = st.radio("Type de réseau", ['WIFI', 'Ethernet', "Mobile"])
     with col3:
-        loc = st.radio("Ou sont stockées les données", ['France', 'Europe', 'Monde', 'USA', 'Chine'])
+        loc = st.radio("Ou sont stockées les données", ['France', 'Europe', 'Allemagne', 'Monde', 'USA', 'Chine'])
 
     if weight and time:
         if appareil == "Smartphone":
@@ -134,6 +134,8 @@ if analysis == "Consommation d'une page web":
             ratio = RATIO_GCO2_KWH_CHINE
         elif loc == "France":
             ratio = RATIO_GCO2_KWH_FRANCE
+        elif loc == "Allemagne":
+            ratio = RATIO_GCO2_KWH_ALLEMAGNE
         bilan = consommation_totale * ratio
         st.markdown("""---""")
 
