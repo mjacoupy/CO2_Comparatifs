@@ -28,8 +28,8 @@ def camembert(iratio, datacenter, reseau, device, appareil, color1, color2):
     plt.axis('equal')
     plt.tight_layout()
     plt.show()
-    st.title(str(sizes))
     st.pyplot(pie)
+    return size
 
 # #######################################################################################################################
 #                                              # === CONSTANTES === #
@@ -232,7 +232,8 @@ elif analysis == "Comparatifs":
 
     with col1:
         for iRatio in ratios:
-            camembert(iRatio, datacenter, reseau, device, FABRICATION_LAPTOP, color1, color2)
+            size = camembert(iRatio, datacenter, reseau, device, FABRICATION_LAPTOP, color1, color2)
+            st.markdown(size)
     with col2:
         for iRatio in ratios:
             camembert(iRatio, datacenter, reseau, device, FABRICATION_LAPTOP_ECRAN, color1, color2)
