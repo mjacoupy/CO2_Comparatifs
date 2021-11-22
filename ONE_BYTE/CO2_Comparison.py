@@ -23,7 +23,7 @@ def camembert(iratio, datacenter, reseau, device, appareil, color1, color2):
     """..."""
     pie = plt.figure(figsize=(4, 4))
     bilan_conso = round((datacenter+reseau+device) * iratio / 1000, 1)
-    sizes = [bilan_conso, appareil/life_time]
+    sizes = [bilan_conso, round(appareil/life_time, 1)]
     patches, texts = plt.pie(sizes, startangle=90, colors=[color1, color2])
     plt.axis('equal')
     plt.tight_layout()
