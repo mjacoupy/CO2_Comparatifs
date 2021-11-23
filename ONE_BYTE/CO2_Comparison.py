@@ -233,10 +233,12 @@ elif analysis == "Comparatifs":
             for iRatio in ratios:
                 sizes = camembert(iRatio, datacenter, reseau, device_ordi, iProduct, color1, color2)
                 st.markdown(str(sizes))
+                st.text(device_ordi)
     with col5:
         for iRatio in ratios:
             sizes = camembert(iRatio, datacenter, reseau, device_tel, FABRICATION_SMARTPHONE, color1, color2)
             st.markdown(str(sizes))
+            st.text(device_tel)
 
 
 
