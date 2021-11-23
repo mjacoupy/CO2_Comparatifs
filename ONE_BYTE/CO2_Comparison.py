@@ -261,7 +261,7 @@ elif analysis == "Comparatifs":
     with col5:
         for iVal in [values_fra, values_eur, values_all, values_ter, values_usa, values_chi]:
             names = ['1', '2', '3', '4']
-            barplot = plt.figure(figsize=(5, 4))
+            barplot = plt.figure(figsize=(3, 4))
             ax = sns.barplot(names, iVal, palette='viridis')
             ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
                               rotation=60, fontsize=15, horizontalalignment="right")
