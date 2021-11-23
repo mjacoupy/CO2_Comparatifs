@@ -251,15 +251,16 @@ for iProduct in fabrications:
 
 
     with col6:
-        names = ['LAPTOP SEUL', 'LAPTOP + ECRAN 17', 'FIXE CLASSIQUE + ECRAN 17', 'FIXE PUISSANT + ECRAN 24', 'SMARTPHONE >5,5']
-        barplot = plt.figure(figsize=(4, 4))
-        ax = sns.barplot(names, values_fra, palette='viridis')
-        ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
-                           rotation=60, fontsize=10, horizontalalignment="right")
-        ax.set_title("Emissions totales")
-        ax.set(xlabel=None)
-        ax.set_ylabel('KgCO2e')
-        st.pyplot(barplot)
+        st.text(values_fra)
+    #     names = ['LAPTOP SEUL', 'LAPTOP + ECRAN 17', 'FIXE CLASSIQUE + ECRAN 17', 'FIXE PUISSANT + ECRAN 24', 'SMARTPHONE >5,5']
+    #     barplot = plt.figure(figsize=(4, 4))
+    #     ax = sns.barplot(names, values_fra, palette='viridis')
+    #     ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
+    #                        rotation=60, fontsize=10, horizontalalignment="right")
+    #     ax.set_title("Emissions totales")
+    #     ax.set(xlabel=None)
+    #     ax.set_ylabel('KgCO2e')
+    #     st.pyplot(barplot)
 
 
 
