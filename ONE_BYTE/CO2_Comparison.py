@@ -269,15 +269,17 @@ elif analysis == "Comparatifs":
 
 
     with col6:
-        #names = ['LAPTOP SEUL', 'LAPTOP + ECRAN 17', 'FIXE CLASSIQUE + ECRAN 17', 'FIXE PUISSANT + ECRAN 24', 'SMARTPHONE >5,5']
-        barplot = plt.figure(figsize=(4, 4))
-        ax = sns.barplot(values_fra, palette='viridis')
-        #ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
+        names = ['LAPTOP SEUL', 'LAPTOP + ECRAN 17', 'FIXE CLASSIQUE + ECRAN 17', 'FIXE PUISSANT + ECRAN 24', 'SMARTPHONE >5,5']
+        st.markdown(names)
+        st.markdown(values_fra)
+        # barplot = plt.figure(figsize=(4, 4))
+        # ax = sns.barplot(values_fra, palette='viridis')
+        # ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
         #                   rotation=60, fontsize=10, horizontalalignment="right")
-        ax.set_title("Emissions totales")
-        ax.set(xlabel=None)
-        ax.set_ylabel('KgCO2e')
-        st.pyplot(barplot)
+        # ax.set_title("Emissions totales")
+        # ax.set(xlabel=None)
+        # ax.set_ylabel('KgCO2e')
+        # st.pyplot(barplot)
 
 
 
