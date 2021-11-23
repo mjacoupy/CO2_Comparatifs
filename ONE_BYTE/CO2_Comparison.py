@@ -223,22 +223,35 @@ elif analysis == "Comparatifs":
         st.markdown('**SMARTPHONE >5,5"**')
 
 
-    col0, col1, col2, col3, col4, col5 = st.columns(6)
+    col0, col1, col2, col3, col4, col5, col6 = st.columns(7)
     with col0:
         for iRegion in [france, europe, allemagne, terre, usa, chine]:
             st.image(iRegion)
             st.markdown("(kgCO2e)")
-
+    values = []
     for iCol, iProduct in zip([col1, col2, col3, col4], [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE_ECRAN17, FABRICATION_FIXE_PUISSANT_ECRAN24]):
         with iCol:
             for iRatio in ratios:
                 sizes = camembert(iRatio, datacenter, reseau, device_ordi, iProduct, color1, color2)
                 st.markdown(str(sizes))
+                values.append(sizes[0]+sizes[1])
 
     with col5:
         for iRatio in ratios:
             sizes = camembert(iRatio, datacenter, reseau, device_tel, FABRICATION_SMARTPHONE, color1, color2)
             st.markdown(str(sizes))
+            values.append(sizes[0]+sizes[1])
+
+    with col6:
+        names = ['LAPTOP SEUL', 'LAPTOP + ECRAN 17', 'FIXE CLASSIQUE + ECRAN 17', 'FIXE PUISSANT + ECRAN 24', 'SMARTPHONE >5,5']
+        barplot = plt.figure(figsize=(4, 4))
+        ax = sns.barplot(names, values, palette='viridis')
+        ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
+                           rotation=60, fontsize=10, horizontalalignment="right")
+        ax.set_title("Emissions totales")
+        ax.set(xlabel=None)
+        ax.set_ylabel('KgCO2e')
+        st.pyplot(barplot)
 
 
 
