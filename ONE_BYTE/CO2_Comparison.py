@@ -34,6 +34,7 @@ def camembert(iratio, datacenter, reseau, device, appareil, color1, color2):
 # #######################################################################################################################
 #                                              # === CONSTANTES === #
 # #######################################################################################################################
+MINUTES_PAR_JOUR = 480
 JOURS_PAR_SEMAINE = 5
 SEMAINE_PAR_AN = 47
 
@@ -206,8 +207,8 @@ elif analysis == "Comparatifs":
 
     reseau = weight_byte * CONSO_WIFI * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
     datacenter = weight_byte * CONSO_DC_WORLD * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
-    device_ordi = CONSO_LAPTOP * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
-    device_tel = CONSO_SMARTPHONE * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
+    device_ordi = CONSO_LAPTOP * MINUTES_PAR_JOUR * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
+    device_tel = CONSO_SMARTPHONE * MINUTES_PAR_JOUR * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
 
     col0, col1, col2, col3, col4, col5 = st.columns(6)
     with col1:
