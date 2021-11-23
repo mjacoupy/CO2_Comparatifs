@@ -228,24 +228,32 @@ elif analysis == "Comparatifs":
         for iRegion in [france, europe, allemagne, terre, usa, chine]:
             st.image(iRegion)
             st.markdown("(kgCO2e)")
-    values = []
     for iCol, iProduct in zip([col1, col2, col3, col4], [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE_ECRAN17, FABRICATION_FIXE_PUISSANT_ECRAN24]):
         with iCol:
+            values = []
             for iRatio in ratios:
                 sizes = camembert(iRatio, datacenter, reseau, device_ordi, iProduct, color1, color2)
                 st.markdown(str(sizes))
                 values.append(sizes[0]+sizes[1])
+
 
     with col5:
         for iRatio in ratios:
             sizes = camembert(iRatio, datacenter, reseau, device_tel, FABRICATION_SMARTPHONE, color1, color2)
             st.markdown(str(sizes))
             values.append(sizes[0]+sizes[1])
+for iProduct in fabrications:
+    values_fra =[]
+    if iProduct != FABRICATION_SMARTPHONE:
+        values_fra.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_FRANCE / 1000) + (iProduct/life_time))
+    else:
+        values_fra.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_FRANCE / 1000) + (iProduct/life_time))
+
 
     with col6:
         names = ['LAPTOP SEUL', 'LAPTOP + ECRAN 17', 'FIXE CLASSIQUE + ECRAN 17', 'FIXE PUISSANT + ECRAN 24', 'SMARTPHONE >5,5']
         barplot = plt.figure(figsize=(4, 4))
-        ax = sns.barplot(names, values, palette='viridis')
+        ax = sns.barplot(names, vavalues_fralues, palette='viridis')
         ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
                            rotation=60, fontsize=10, horizontalalignment="right")
         ax.set_title("Emissions totales")
