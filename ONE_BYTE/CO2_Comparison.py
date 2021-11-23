@@ -227,6 +227,11 @@ elif analysis == "Comparatifs":
         for iRegion in [france, europe, allemagne, terre, usa, chine]:
             st.image(iRegion)
             st.markdown("(kgCO2e)")
+            st.text("device")
+            st.text("ratio")
+            st.text("datacenter")
+            st.text("reseau")
+            st.text("iProduct")
 
     for iCol, iProduct in zip([col1, col2, col3, col4], [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE_ECRAN17, FABRICATION_FIXE_PUISSANT_ECRAN24]):
         with iCol:
