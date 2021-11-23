@@ -230,18 +230,13 @@ elif analysis == "Comparatifs":
             st.markdown("(kgCO2e)")
     for iCol, iProduct in zip([col1, col2, col3], [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE_PUISSANT_ECRAN24]):
         with iCol:
-            values = []
             for iRatio in ratios:
                 sizes = camembert(iRatio, datacenter, reseau, device_ordi, iProduct, color1, color2)
-                st.markdown(str(sizes))
-                values.append(sizes[0]+sizes[1])
 
 
     with col4:
         for iRatio in ratios:
             sizes = camembert(iRatio, datacenter, reseau, device_tel, FABRICATION_SMARTPHONE, color1, color2)
-            st.markdown(str(sizes))
-            values.append(sizes[0]+sizes[1])
 
     values_fra = []
     values_eur = []
