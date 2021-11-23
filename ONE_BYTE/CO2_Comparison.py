@@ -219,8 +219,6 @@ elif analysis == "Comparatifs":
         st.markdown('**FIXE PUISSANT + ECRAN 24"**')
     with col4:
         st.markdown('**SMARTPHONE >5,5"**')
-    with col5:
-        st.markdown('**TOTAL**')
 
 
     col0, col1, col2, col3, col4, col5, col6 = st.columns(7)
@@ -261,14 +259,15 @@ elif analysis == "Comparatifs":
 
 
     with col5:
-        names = ['1', '2', '3', '4']
-        barplot = plt.figure(figsize=(4, 4))
-        ax = sns.barplot(names, values_fra, palette='viridis')
-        ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
-                          rotation=60, fontsize=15, horizontalalignment="right")
-        ax.set(xlabel=None)
-        ax.set_ylabel('KgCO2e')
-        st.pyplot(barplot)
+        for iVal in [values_fra, values_eur, values_all, values_ter, values_usa, values_chi]:
+            names = ['1', '2', '3', '4']
+            barplot = plt.figure(figsize=(4, 4))
+            ax = sns.barplot(names, iVal, palette='viridis')
+            ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
+                              rotation=60, fontsize=15, horizontalalignment="right")
+            ax.set(xlabel=None)
+            ax.set_ylabel('KgCO2e')
+            st.pyplot(barplot)
 
 
 
