@@ -245,13 +245,13 @@ elif analysis == "Comparatifs":
             st.markdown(str(sizes))
             values.append(sizes[0]+sizes[1])
 
+    values_fra = []
+    values_eur = []
+    values_all = []
+    values_ter = []
+    values_usa = []
+    values_chi = []
     for iProduct in fabrications:
-        values_fra = []
-        values_eur = []
-        values_all = []
-        values_ter = []
-        values_usa = []
-        values_chi = []
         if iProduct != FABRICATION_SMARTPHONE:
             values_fra.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_FRANCE / 1000) + (iProduct/life_time))
             values_eur.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_EUROPE / 1000) + (iProduct/life_time))
@@ -270,16 +270,14 @@ elif analysis == "Comparatifs":
 
     with col6:
         names = ['LAPTOP SEUL', 'LAPTOP + ECRAN 17', 'FIXE CLASSIQUE + ECRAN 17', 'FIXE PUISSANT + ECRAN 24', 'SMARTPHONE >5,5']
-        st.markdown(names)
-        st.markdown(values_fra)
-        # barplot = plt.figure(figsize=(4, 4))
-        # ax = sns.barplot(values_fra, palette='viridis')
-        # ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
-        #                   rotation=60, fontsize=10, horizontalalignment="right")
-        # ax.set_title("Emissions totales")
-        # ax.set(xlabel=None)
-        # ax.set_ylabel('KgCO2e')
-        # st.pyplot(barplot)
+        barplot = plt.figure(figsize=(4, 4))
+        ax = sns.barplot(values_fra, palette='viridis')
+        ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
+                          rotation=60, fontsize=10, horizontalalignment="right")
+        ax.set_title("Emissions totales")
+        ax.set(xlabel=None)
+        ax.set_ylabel('KgCO2e')
+        st.pyplot(barplot)
 
 
 
