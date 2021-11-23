@@ -274,10 +274,10 @@ elif analysis == "Comparatifs":
         ax = sns.barplot(values_fra, palette='viridis')
         #ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
         #                   rotation=60, fontsize=10, horizontalalignment="right")
-        #ax.set_title("Emissions totales")
-        #ax.set(xlabel=None)
-        #ax.set_ylabel('KgCO2e')
-        #st.pyplot(barplot)
+        ax.set_title("Emissions totales")
+        ax.set(xlabel=None)
+        ax.set_ylabel('KgCO2e')
+        st.pyplot(barplot)
 
 
 
