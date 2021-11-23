@@ -244,27 +244,28 @@ elif analysis == "Comparatifs":
             sizes = camembert(iRatio, datacenter, reseau, device_tel, FABRICATION_SMARTPHONE, color1, color2)
             st.markdown(str(sizes))
             values.append(sizes[0]+sizes[1])
-for iProduct in fabrications:
-    values_fra = []
-    values_eur = []
-    values_all = []
-    values_ter = []
-    values_usa = []
-    values_chi = []
-    if iProduct != FABRICATION_SMARTPHONE:
-        values_fra.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_FRANCE / 1000) + (iProduct/life_time))
-        values_eur.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_EUROPE / 1000) + (iProduct/life_time))
-        values_all.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_ALLEMAGNE / 1000) + (iProduct/life_time))
-        values_ter.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_WORLD / 1000) + (iProduct/life_time))
-        values_usa.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_USA / 1000) + (iProduct/life_time))
-        values_chi.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_CHINE / 1000) + (iProduct/life_time))
-    else:
-        values_fra.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_FRANCE / 1000) + (iProduct/life_time))
-        values_eur.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_EUROPE / 1000) + (iProduct/life_time))
-        values_all.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_ALLEMAGNE / 1000) + (iProduct/life_time))
-        values_ter.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_WORLD / 1000) + (iProduct/life_time))
-        values_usa.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_USA / 1000) + (iProduct/life_time))
-        values_chi.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_CHINE / 1000) + (iProduct/life_time))
+
+    for iProduct in fabrications:
+        values_fra = []
+        values_eur = []
+        values_all = []
+        values_ter = []
+        values_usa = []
+        values_chi = []
+        if iProduct != FABRICATION_SMARTPHONE:
+            values_fra.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_FRANCE / 1000) + (iProduct/life_time))
+            values_eur.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_EUROPE / 1000) + (iProduct/life_time))
+            values_all.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_ALLEMAGNE / 1000) + (iProduct/life_time))
+            values_ter.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_WORLD / 1000) + (iProduct/life_time))
+            values_usa.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_USA / 1000) + (iProduct/life_time))
+            values_chi.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_CHINE / 1000) + (iProduct/life_time))
+        else:
+            values_fra.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_FRANCE / 1000) + (iProduct/life_time))
+            values_eur.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_EUROPE / 1000) + (iProduct/life_time))
+            values_all.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_ALLEMAGNE / 1000) + (iProduct/life_time))
+            values_ter.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_WORLD / 1000) + (iProduct/life_time))
+            values_usa.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_USA / 1000) + (iProduct/life_time))
+            values_chi.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_CHINE / 1000) + (iProduct/life_time))
 
 
     with col6:
