@@ -243,7 +243,7 @@ elif analysis == "Comparatifs":
             st.markdown(str(sizes))
             values.append(sizes[0]+sizes[1])
 for iProduct in fabrications:
-    values_fra =[]
+    values_fra = []
     if iProduct != FABRICATION_SMARTPHONE:
         values_fra.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_FRANCE / 1000) + (iProduct/life_time))
     else:
@@ -253,7 +253,7 @@ for iProduct in fabrications:
     with col6:
         names = ['LAPTOP SEUL', 'LAPTOP + ECRAN 17', 'FIXE CLASSIQUE + ECRAN 17', 'FIXE PUISSANT + ECRAN 24', 'SMARTPHONE >5,5']
         barplot = plt.figure(figsize=(4, 4))
-        ax = sns.barplot(names, vavalues_fralues, palette='viridis')
+        ax = sns.barplot(names, values_fra, palette='viridis')
         ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
                            rotation=60, fontsize=10, horizontalalignment="right")
         ax.set_title("Emissions totales")
