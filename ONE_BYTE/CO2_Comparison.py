@@ -203,7 +203,7 @@ elif analysis == "Comparatifs":
     weight_byte = weight*1e9
 
     ratios = [RATIO_GCO2_KWH_FRANCE, RATIO_GCO2_KWH_EUROPE, RATIO_GCO2_KWH_ALLEMAGNE, RATIO_GCO2_KWH_WORLD, RATIO_GCO2_KWH_USA, RATIO_GCO2_KWH_CHINE]
-    fabrications = [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE_ECRAN17, FABRICATION_FIXE_PUISSANT_ECRAN24, FABRICATION_SMARTPHONE]
+    fabrications = [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE_PUISSANT_ECRAN24, FABRICATION_SMARTPHONE]
 
     reseau = weight_byte * CONSO_WIFI * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
     datacenter = weight_byte * CONSO_DC_WORLD * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
@@ -216,12 +216,10 @@ elif analysis == "Comparatifs":
     with col2:
         st.markdown('**LAPTOP + ECRAN 17"**')
     with col3:
-        st.markdown('**FIXE CLASSIQUE + ECRAN 17"**')
-    with col4:
         st.markdown('**FIXE PUISSANT + ECRAN 24"**')
-    with col5:
+    with col4:
         st.markdown('**SMARTPHONE >5,5"**')
-    with col6:
+    with col5:
         st.markdown('**TOTAL**')
 
 
@@ -230,7 +228,7 @@ elif analysis == "Comparatifs":
         for iRegion in [france, europe, allemagne, terre, usa, chine]:
             st.image(iRegion)
             st.markdown("(kgCO2e)")
-    for iCol, iProduct in zip([col1, col2, col3, col4], [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE_ECRAN17, FABRICATION_FIXE_PUISSANT_ECRAN24]):
+    for iCol, iProduct in zip([col1, col2, col3], [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE_PUISSANT_ECRAN24]):
         with iCol:
             values = []
             for iRatio in ratios:
@@ -239,7 +237,7 @@ elif analysis == "Comparatifs":
                 values.append(sizes[0]+sizes[1])
 
 
-    with col5:
+    with col4:
         for iRatio in ratios:
             sizes = camembert(iRatio, datacenter, reseau, device_tel, FABRICATION_SMARTPHONE, color1, color2)
             st.markdown(str(sizes))
@@ -268,8 +266,8 @@ elif analysis == "Comparatifs":
             values_chi.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_CHINE / 1000) + (iProduct/life_time))
 
 
-    with col6:
-        names = ['LAPTOP SEUL', 'LAPTOP + ECRAN 17', 'FIXE CLASSIQUE + ECRAN 17', 'FIXE PUISSANT + ECRAN 24', 'SMARTPHONE >5,5']
+    with col5:
+        names = ['LAPTOP SEUL', 'LAPTOP + ECRAN 17', 'FIXE CLASSIQUE + ECRAN 17', 'SMARTPHONE >5,5']
         barplot = plt.figure(figsize=(4, 4))
         ax = sns.barplot(names, values_fra, palette='viridis')
         ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
