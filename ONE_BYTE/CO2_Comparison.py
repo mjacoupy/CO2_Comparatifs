@@ -227,7 +227,6 @@ elif analysis == "Comparatifs":
     with col0:
         for iRegion in [france, europe, allemagne, terre, usa, chine]:
             st.image(iRegion)
-            st.markdown("(kgCO2e)")
     for iCol, iProduct in zip([col1, col2, col3], [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE_PUISSANT_ECRAN24]):
         with iCol:
             for iRatio in ratios:
@@ -263,7 +262,7 @@ elif analysis == "Comparatifs":
 
     with col5:
         names = ['LAPTOP SEUL', 'LAPTOP + ECRAN 17', 'FIXE CLASSIQUE + ECRAN 17', 'SMARTPHONE >5,5']
-        barplot = plt.figure(figsize=(4, 4))
+        barplot = plt.figure(figsize=(4, 8))
         ax = sns.barplot(names, values_fra, palette='viridis')
         ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
                           rotation=60, fontsize=10, horizontalalignment="right")
