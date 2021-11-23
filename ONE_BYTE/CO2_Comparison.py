@@ -262,7 +262,7 @@ elif analysis == "Comparatifs":
 
     with col5:
         names = ['LAPTOP SEUL', 'LAPTOP + ECRAN 17', 'FIXE CLASSIQUE + ECRAN 17', 'SMARTPHONE >5,5']
-        barplot = plt.figure(figsize=(4, 8))
+        barplot = plt.figure(figsize=(8, 4))
         ax = sns.barplot(names, values_fra, palette='viridis')
         ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
                           rotation=60, fontsize=10, horizontalalignment="right")
