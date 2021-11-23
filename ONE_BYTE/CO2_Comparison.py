@@ -210,7 +210,7 @@ elif analysis == "Comparatifs":
     device_ordi = CONSO_LAPTOP * MINUTES_PAR_JOUR * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
     device_tel = CONSO_SMARTPHONE * MINUTES_PAR_JOUR * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
 
-    col0, col1, col2, col3, col4, col5 = st.columns(6)
+    col0, col1, col2, col3, col4, col5, col6 = st.columns(7)
     with col1:
         st.markdown("**LAPTOP SEUL**")
     with col2:
@@ -221,6 +221,8 @@ elif analysis == "Comparatifs":
         st.markdown('**FIXE PUISSANT + ECRAN 24"**')
     with col5:
         st.markdown('**SMARTPHONE >5,5"**')
+    with col6:
+        st.markdown('**TOTAL**')
 
 
     col0, col1, col2, col3, col4, col5, col6 = st.columns(7)
@@ -244,23 +246,38 @@ elif analysis == "Comparatifs":
             values.append(sizes[0]+sizes[1])
 for iProduct in fabrications:
     values_fra = []
+    values_eur = []
+    values_all = []
+    values_ter = []
+    values_usa = []
+    values_chi = []
     if iProduct != FABRICATION_SMARTPHONE:
         values_fra.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_FRANCE / 1000) + (iProduct/life_time))
+        values_eur.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_EUROPE / 1000) + (iProduct/life_time))
+        values_all.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_ALLEMAGNE / 1000) + (iProduct/life_time))
+        values_ter.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_WORLD / 1000) + (iProduct/life_time))
+        values_usa.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_USA / 1000) + (iProduct/life_time))
+        values_chi.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_CHINE / 1000) + (iProduct/life_time))
     else:
         values_fra.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_FRANCE / 1000) + (iProduct/life_time))
+        values_eur.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_EUROPE / 1000) + (iProduct/life_time))
+        values_all.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_ALLEMAGNE / 1000) + (iProduct/life_time))
+        values_ter.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_WORLD / 1000) + (iProduct/life_time))
+        values_usa.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_USA / 1000) + (iProduct/life_time))
+        values_chi.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_CHINE / 1000) + (iProduct/life_time))
 
 
     with col6:
         st.text(values_fra)
-    #     names = ['LAPTOP SEUL', 'LAPTOP + ECRAN 17', 'FIXE CLASSIQUE + ECRAN 17', 'FIXE PUISSANT + ECRAN 24', 'SMARTPHONE >5,5']
-    #     barplot = plt.figure(figsize=(4, 4))
-    #     ax = sns.barplot(names, values_fra, palette='viridis')
-    #     ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
-    #                        rotation=60, fontsize=10, horizontalalignment="right")
-    #     ax.set_title("Emissions totales")
-    #     ax.set(xlabel=None)
-    #     ax.set_ylabel('KgCO2e')
-    #     st.pyplot(barplot)
+        names = ['LAPTOP SEUL', 'LAPTOP + ECRAN 17', 'FIXE CLASSIQUE + ECRAN 17', 'FIXE PUISSANT + ECRAN 24', 'SMARTPHONE >5,5']
+        barplot = plt.figure(figsize=(4, 4))
+        ax = sns.barplot(names, values_fra, palette='viridis')
+        ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
+                           rotation=60, fontsize=10, horizontalalignment="right")
+        ax.set_title("Emissions totales")
+        ax.set(xlabel=None)
+        ax.set_ylabel('KgCO2e')
+        st.pyplot(barplot)
 
 
 
