@@ -34,9 +34,9 @@ def camembert(iratio, datacenter, reseau, device, appareil, color1, color2):
 # #######################################################################################################################
 #                                              # === CONSTANTES === #
 # #######################################################################################################################
-MINUTES_PAR_JOUR = 480
+MINUTES_PAR_JOUR = 480 # 8h de travail
 JOURS_PAR_SEMAINE = 5
-SEMAINE_PAR_AN = 47
+SEMAINE_PAR_AN = 47 # 5 semaines de CP en France
 
 # From ADEME
 FABRICATION_LAPTOP = 156
@@ -92,7 +92,7 @@ st.sidebar.image(image2, width=200)
 
 analysis = st.sidebar.selectbox('', ["Consommation d'une page web", "Comparatifs"])
 side_bar()
-st.title("One byte model")
+st.title("1-byte-model")
 
 if analysis == "Consommation d'une page web":
 
@@ -276,8 +276,12 @@ elif analysis == "Comparatifs":
 #                                          # === END OF FILE === #
 
 # #######################################################################################################################
-
+# Who use the one byte model
 # Carbonalyser
 #
+
+# Other
+# http://www.green-algorithms.org/
+# https://onlinelibrary.wiley.com/doi/10.1002/advs.202100707
 
 
