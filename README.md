@@ -18,19 +18,26 @@ Sont pris en compte :
 ## Description - lecture d'une page web
 
 ### Rentrer le poids de la page et le temps de lecture
-> Le poids est trouvable avec la console JavaScript de Chrome ou Firefox.
+Le poids est trouvable via la console JavaScript de Chrome ou Firefox. 
+> Rendez vous sur votre page web
+>
+> Ouvrez la console de développement sur le panel Network
+> 
+> Relancez la page avec un hard reload (ctrl + shift + R)
+> 
+> La quantité de données transférées est écrite en bas à gauche
 
 ### Choix du type d'appareil, du réseau, et du lieu de travail
 > L'impact énergétique dépend beaucoup de lieu de travail et de l'origine de l'énergie de chaque pays.
 
 S'affichent alors les calculs des Bilan Carbone et de la consommation énergétique totale de la lecture d'une page web.
-> Les deux graphes représentent la proportion du score détenu par chacune des sous-parties.
+> Les deux graphes représentent la proportion du score détenue par chacune des sous-parties.
  
 ## Description - Comparatif
 
 ### Rentrer la quantité de données moyenne utilisée par jour de travail et l’âge actuel de l'appareil 
 > Une base de calcul est proposée par Orange. Le lien est le suivant : https://www.orange.ma/Offres-services/Simulateur
-
+>
 > L’âge permet de calculer le cout annuel de l'appareil. Plus un appareil est récent, plus son cout annuel est important. 
 
 ### Choix des couleurs des légendes
