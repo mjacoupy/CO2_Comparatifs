@@ -37,7 +37,7 @@ S'affichent alors les calculs des Bilan Carbone et de la consommation énergéti
 Les couleurs sont modifiables pour les camemberts suivants
 
 S'affiche alors 30 graphiques. 24 camemberts correspondant à la comparaison de 4 combinaisons d'appareils dans 6 pays/régions du monde. 
-> le drapeau bleu avec les 6 cercles correspond au drapeau de la terre (il s'agit ici d'une moyenne mondiale). 
+> Le drapeau bleu avec les 6 cercles correspond au drapeau de la terre (il s'agit ici d'une moyenne mondiale). 
 
 Les barplots représentent la consommation totale de chacun des appareils pour le pays ou la région correspondante (1 étant Laptop et 4 Smartphone)
 
