@@ -208,13 +208,13 @@ elif analysis == "Comparatifs":
         st.write("[Lien vers la page de calculs](https://www.orange.ma/Offres-services/Simulateur)")
     st.markdown("""---""")
     st.markdown("Légende (couleurs modifiables)")
-    col1, col2, col3 = st.columns([2, 2, 6])
+    col1, col2, col3, col4 = st.columns([2, 2, 3, 3])
 
     with col1:
         color1 = st.color_picker("Consommation", '#250044')
     with col2:
         color2 = st.color_picker("Hardware", '#fcba28')
-    with col3:
+    with col4:
         value = st.radio("Source de données", ["1-byte-model", "Recherche 2020"])
         if value == "1-byte-model":
             CONSO_WIFI = CONSO_WIFI1
@@ -299,12 +299,4 @@ elif analysis == "Comparatifs":
 #                                          # === END OF FILE === #
 
 # #######################################################################################################################
-# Who use the one byte model
-# Carbonalyser
-#
-
-# Other
-# http://www.green-algorithms.org/
-# https://onlinelibrary.wiley.com/doi/10.1002/advs.202100707
-
 
