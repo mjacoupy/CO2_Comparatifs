@@ -80,11 +80,13 @@ CONSO_DC_FRANCE = RATIO_GCO2_KWH_FRANCE * CONSO_DC_WORLD / RATIO_GCO2_KWH_WORLD
 # #### NEW #####
 # From IEA analysis based on Masanet et al. (2020) and Malmodin (2020).
 CONSO_DS_KWH = 225 * 1e9
+# From https://www.statista.com/statistics/638593/worldwide-data-center-storage-capacity-cloud-vs-traditional/
 CONSO_DS_BYTE = 2300 * 1e18
 CONSO_DC_WORLD = CONSO_DS_KWH / CONSO_DS_BYTE
 
 # IEA analysis based on Coroamă (2021), ITU (2020) and Malmodin and Lundén (2018).
 CONSO_NETWORK_KWH = 300 * 1e9
+# From https://www.statista.com/statistics/638593/worldwide-data-center-storage-capacity-cloud-vs-traditional/
 CONSO_DS_BYTE = 2300 * 1e18
 CONSO_WIFI2 = CONSO_NETWORK_KWH / CONSO_DS_BYTE
 
@@ -131,7 +133,7 @@ if analysis == "Consommation d'une page web":
         if network == "Ethernet":
             conso_network = CONSO_ETHERNET
         elif network == "WIFI":
-            conso_network = CONSO_WIFI
+            conso_network = CONSO_WIFI1
         elif network == "Mobile":
             conso_network = CONSO_MOBILE
 
