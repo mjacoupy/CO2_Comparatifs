@@ -215,7 +215,7 @@ elif analysis == "Comparatifs":
     with col2:
         color2 = st.color_picker("Hardware", '#fcba28')
     with col4:
-        value = st.radio("Source de données", ["1-byte-model", "Recherche 2020"])
+        value = st.radio("Source de données", ["1-byte-model", "Articles de recherche 2020"])
         if value == "1-byte-model":
             CONSO_WIFI = CONSO_WIFI1
         else:
