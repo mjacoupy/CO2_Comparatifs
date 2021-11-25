@@ -59,7 +59,7 @@ RATIO_GCO2_KWH_ALLEMAGNE = 311
 
 # From One-byte_model
 CONSO_ETHERNET = 0.000000000429
-CONSO_WIFI = 0.000000000152
+CONSO_WIFI1 = 0.000000000152
 CONSO_MOBILE = 0.000000000884
 
 CONSO_LAPTOP = 0.000319415925165412
@@ -86,7 +86,7 @@ CONSO_DC_WORLD = CONSO_DS_KWH / CONSO_DS_BYTE
 # IEA analysis based on Coroamă (2021), ITU (2020) and Malmodin and Lundén (2018).
 CONSO_NETWORK_KWH = 300 * 1e9
 CONSO_DS_BYTE = 2300 * 1e18
-CONSO_WIFI = CONSO_NETWORK_KWH / CONSO_DS_BYTE
+CONSO_WIFI2 = CONSO_NETWORK_KWH / CONSO_DS_BYTE
 
 # #######################################################################################################################
 #                                              # === ALGO === #
@@ -212,7 +212,14 @@ elif analysis == "Comparatifs":
         color1 = st.color_picker("Consommation", '#250044')
     with col2:
         color2 = st.color_picker("Hardware", '#fcba28')
+    with col3:
+        value = st.radio("Source de données", ["1-byte-model", "Recherche 2020"])
+        if value == "1-byte-model":
+            CONSO_WIFI = CONSO_WIFI1
+        else:
+            CONSO_WIFI = CONSO_WIFI2
     st.markdown("""---""")
+
     # Comparatif des types
     weight_byte = weight*1e9
 
