@@ -74,14 +74,18 @@ CONSO_DC_WORLD1 = CONSO_DS_KWH / CONSO_DS_BYTE
 # #### NEW #####
 # From IEA analysis based on Masanet et al. (2020) and Malmodin (2020).
 CONSO_DS_KWH = 225 * 1e9
-# From https://techjury.net/blog/how-much-data-is-created-every-day/#gref
-CONSO_DS_BYTE = 44 * 1e21
+# # From https://techjury.net/blog/how-much-data-is-created-every-day/#gref
+# CONSO_DS_BYTE = 44 * 1e21
+# From https://www.globenewswire.com/fr/news-release/2021/03/08/2188582/28124/en/Data-Center-IP-Traffic-Estimated-to-Reach-20-6-Zettabytes-by-the-End-of-2021.html
+CONSO_DS_BYTE = 20.8 * 1e21
 CONSO_DC_WORLD2 = CONSO_DS_KWH / CONSO_DS_BYTE
 
 # IEA analysis based on Coroamă (2021), ITU (2020) and Malmodin and Lundén (2018).
 CONSO_NETWORK_KWH = 300 * 1e9
-# From https://techjury.net/blog/how-much-data-is-created-every-day/#gref
-CONSO_DS_BYTE = 44 * 1e21
+# # From https://techjury.net/blog/how-much-data-is-created-every-day/#gref
+# CONSO_DS_BYTE = 44 * 1e21
+# From https://www.globenewswire.com/fr/news-release/2021/03/08/2188582/28124/en/Data-Center-IP-Traffic-Estimated-to-Reach-20-6-Zettabytes-by-the-End-of-2021.html
+CONSO_DS_BYTE = 20.8 * 1e21
 CONSO_WIFI2 = CONSO_NETWORK_KWH / CONSO_DS_BYTE
 
 # #######################################################################################################################
