@@ -70,20 +70,18 @@ CONSO_SMARTPHONE = 0.000107688797627196
 CONSO_DS_KWH = 894 * 1e9
 CONSO_DS_BYTE = 17.1 * 1e21
 CONSO_DC_WORLD1 = CONSO_DS_KWH / CONSO_DS_BYTE
-CONSO_DC_WORLD1 = 0.000000000072
 
 # #### NEW #####
 # From IEA analysis based on Masanet et al. (2020) and Malmodin (2020).
 CONSO_DS_KWH = 225 * 1e9
-# From https://www.statista.com/statistics/638593/worldwide-data-center-storage-capacity-cloud-vs-traditional/
-CONSO_DS_BYTE = 2300 * 1e18
+# From https://techjury.net/blog/how-much-data-is-created-every-day/#gref
+CONSO_DS_BYTE = 44 * 1e21
 CONSO_DC_WORLD2 = CONSO_DS_KWH / CONSO_DS_BYTE
 
 # IEA analysis based on Coroamă (2021), ITU (2020) and Malmodin and Lundén (2018).
 CONSO_NETWORK_KWH = 300 * 1e9
-# From https://www.statista.com/statistics/638593/worldwide-data-center-storage-capacity-cloud-vs-traditional/
-# Sources payantes...
-CONSO_DS_BYTE = 2300 * 1e18
+# From https://techjury.net/blog/how-much-data-is-created-every-day/#gref
+CONSO_DS_BYTE = 44 * 1e21
 CONSO_WIFI2 = CONSO_NETWORK_KWH / CONSO_DS_BYTE
 
 # #######################################################################################################################
@@ -217,7 +215,7 @@ elif analysis == "Comparatifs":
             CONSO_DC_WORLD = CONSO_DC_WORLD1
         else:
             CONSO_WIFI = CONSO_WIFI2
-            CONSO_DC_WORLD = CONSO_DC_WORLD1
+            CONSO_DC_WORLD = CONSO_DC_WORLD2
     st.markdown("""---""")
 
     # Comparatif des types
