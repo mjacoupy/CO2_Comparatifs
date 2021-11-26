@@ -69,20 +69,14 @@ CONSO_SMARTPHONE = 0.000107688797627196
 # From One byte model
 CONSO_DS_BYTE = 17.1 * 1e21
 CONSO_DS_KWH = 894 * 1e9
-CONSO_DC_WORLD = CONSO_DS_KWH / CONSO_DS_BYTE
-
-# Calculé
-CONSO_DC_EUROPE = RATIO_GCO2_KWH_EUROPE * CONSO_DC_WORLD / RATIO_GCO2_KWH_WORLD
-CONSO_DC_CHINE = RATIO_GCO2_KWH_CHINE * CONSO_DC_WORLD / RATIO_GCO2_KWH_WORLD
-CONSO_DC_USA = RATIO_GCO2_KWH_USA * CONSO_DC_WORLD / RATIO_GCO2_KWH_WORLD
-CONSO_DC_FRANCE = RATIO_GCO2_KWH_FRANCE * CONSO_DC_WORLD / RATIO_GCO2_KWH_WORLD
+CONSO_DC_WORLD1 = CONSO_DS_KWH / CONSO_DS_BYTE
 
 # #### NEW #####
 # From IEA analysis based on Masanet et al. (2020) and Malmodin (2020).
 CONSO_DS_KWH = 225 * 1e9
 # From https://www.statista.com/statistics/638593/worldwide-data-center-storage-capacity-cloud-vs-traditional/
 CONSO_DS_BYTE = 2300 * 1e18
-CONSO_DC_WORLD = CONSO_DS_KWH / CONSO_DS_BYTE
+CONSO_DC_WORLD2 = CONSO_DS_KWH / CONSO_DS_BYTE
 
 # IEA analysis based on Coroamă (2021), ITU (2020) and Malmodin and Lundén (2018).
 CONSO_NETWORK_KWH = 300 * 1e9
@@ -138,7 +132,7 @@ if analysis == "Consommation d'une page web":
         elif network == "Mobile":
             conso_network = CONSO_MOBILE
 
-        datacenter = weight * 1e6 * CONSO_DC_WORLD
+        datacenter = weight * 1e6 * CONSO_DC_WORLD1
         reseau = weight * 1e6 * conso_network
         device = time * conso_appareil
         consommation_totale = datacenter + reseau + device
@@ -219,8 +213,10 @@ elif analysis == "Comparatifs":
         value = st.radio("Source de données", ["1-byte-model", "Articles de recherche 2020"])
         if value == "1-byte-model":
             CONSO_WIFI = CONSO_WIFI1
+            CONSO_DC_WORLD = CONSO_DC_WORLD1
         else:
             CONSO_WIFI = CONSO_WIFI2
+            CONSO_DC_WORLD = CONSO_DC_WORLD2
     st.markdown("""---""")
 
     # Comparatif des types
