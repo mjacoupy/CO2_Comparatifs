@@ -34,9 +34,9 @@ def camembert(iratio, datacenter, reseau, device, appareil, color1, color2):
 # #######################################################################################################################
 #                                              # === CONSTANTES === #
 # #######################################################################################################################
-MINUTES_PAR_JOUR = 480 # 8h de travail
+MINUTES_PAR_JOUR = 480
 JOURS_PAR_SEMAINE = 5
-SEMAINE_PAR_AN = 47 # 5 semaines de CP en France
+SEMAINE_PAR_AN = 47
 
 # From ADEME
 FABRICATION_LAPTOP = 156
@@ -87,6 +87,7 @@ CONSO_DC_WORLD = CONSO_DS_KWH / CONSO_DS_BYTE
 # IEA analysis based on Coroamă (2021), ITU (2020) and Malmodin and Lundén (2018).
 CONSO_NETWORK_KWH = 300 * 1e9
 # From https://www.statista.com/statistics/638593/worldwide-data-center-storage-capacity-cloud-vs-traditional/
+# Sources payantes...
 CONSO_DS_BYTE = 2300 * 1e18
 CONSO_WIFI2 = CONSO_NETWORK_KWH / CONSO_DS_BYTE
 
