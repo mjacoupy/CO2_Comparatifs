@@ -214,9 +214,11 @@ elif analysis == "Comparatifs":
         if value == "1-byte-model":
             CONSO_WIFI = CONSO_WIFI1
             CONSO_DC_WORLD = CONSO_DC_WORLD1
+            st.write(CONSO_DC_WORLD1)
         else:
             CONSO_WIFI = CONSO_WIFI2
             CONSO_DC_WORLD = CONSO_DC_WORLD2
+            st.write(CONSO_DC_WORLD2)
     st.markdown("""---""")
 
     # Comparatif des types
