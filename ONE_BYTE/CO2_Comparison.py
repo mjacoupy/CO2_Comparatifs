@@ -67,9 +67,10 @@ CONSO_FIXE = None
 CONSO_SMARTPHONE = 0.000107688797627196
 
 # From One byte model
-CONSO_DS_BYTE = 17.1 * 1e21
 CONSO_DS_KWH = 894 * 1e9
+CONSO_DS_BYTE = 17.1 * 1e21
 CONSO_DC_WORLD1 = CONSO_DS_KWH / CONSO_DS_BYTE
+CONSO_DC_WORLD1 = 0.000000000072
 
 # #### NEW #####
 # From IEA analysis based on Masanet et al. (2020) and Malmodin (2020).
@@ -217,7 +218,7 @@ elif analysis == "Comparatifs":
             st.write(CONSO_DC_WORLD1)
         else:
             CONSO_WIFI = CONSO_WIFI2
-            CONSO_DC_WORLD = CONSO_DC_WORLD1
+            CONSO_DC_WORLD = CONSO_DC_WORLD2
     st.markdown("""---""")
 
     # Comparatif des types
