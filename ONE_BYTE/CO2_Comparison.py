@@ -121,6 +121,13 @@ if analysis == "Consommation d'une page web":
         network = st.radio("Type de réseau", ['WIFI', 'Ethernet', "Mobile"])
     with col3:
         loc = st.radio("Lieu de travail", ['France', 'Europe', 'Allemagne', 'Monde', 'USA', 'Chine'])
+        value = st.radio("Source de données", ["1-byte-model", "Articles de recherche 2020"])
+        if value == "1-byte-model":
+            CONSO_WIFI = CONSO_WIFI1
+            CONSO_DC_WORLD = CONSO_DC_WORLD1
+        else:
+            CONSO_WIFI = CONSO_WIFI2
+            CONSO_DC_WORLD = CONSO_DC_WORLD2
 
     if weight and time:
         if appareil == "Smartphone":
@@ -131,11 +138,11 @@ if analysis == "Consommation d'une page web":
         if network == "Ethernet":
             conso_network = CONSO_ETHERNET
         elif network == "WIFI":
-            conso_network = CONSO_WIFI1
+            conso_network = CONSO_WIFI
         elif network == "Mobile":
             conso_network = CONSO_MOBILE
 
-        datacenter = weight * 1e6 * CONSO_DC_WORLD1
+        datacenter = weight * 1e6 * CONSO_DC_WORLD
         reseau = weight * 1e6 * conso_network
         device = time * conso_appareil
         consommation_totale = datacenter + reseau + device
