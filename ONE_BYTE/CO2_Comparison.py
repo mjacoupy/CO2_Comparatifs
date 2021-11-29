@@ -164,10 +164,10 @@ if analysis == "Consommation d'une page web":
 
         # Metrics
         col1, col2 = st.columns(2)
-        with col2:
-            st.metric(label="Emprinte Carbone", value=str(round(bilan, 3))+" gCO2e", delta=0)
         with col1:
             st.metric(label="Consommation électrique", value=str(round(consommation_totale, 3))+" kWh", delta=0)
+        with col2:
+            st.metric(label="Emprinte Carbone", value=str(round(bilan, 3))+" gCO2e", delta=0)
 
         # Plots
         names = ['DATA CENTER', 'RESEAU', 'APPAREIL']
@@ -175,17 +175,6 @@ if analysis == "Consommation d'une page web":
         col1, col2 = st.columns(2)
 
         with col1:
-            values = [datacenter * RATIO_GCO2_KWH_WORLD, reseau * RATIO_GCO2_KWH_WORLD, device * ratio]
-
-            barplot_2 = plt.figure(figsize=(6, 3.5))
-            ax = sns.barplot(names, values, palette='viridis')
-            ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
-                               rotation=60, fontsize=10, horizontalalignment="right")
-            ax.set_title("Repartition des emission de CO2")
-            ax.set(xlabel=None)
-            ax.set_ylabel('gCOEe')
-            st.pyplot(barplot_2)
-        with col2:
             values = [datacenter, reseau, device]
 
             barplot_1 = plt.figure(figsize=(6, 3.5))
@@ -197,7 +186,17 @@ if analysis == "Consommation d'une page web":
             ax.set_ylabel('kWh')
             st.pyplot(barplot_1)
 
+        with col2:
+            values = [datacenter * RATIO_GCO2_KWH_WORLD, reseau * RATIO_GCO2_KWH_WORLD, device * ratio]
 
+            barplot_2 = plt.figure(figsize=(6, 3.5))
+            ax = sns.barplot(names, values, palette='viridis')
+            ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
+                               rotation=60, fontsize=10, horizontalalignment="right")
+            ax.set_title("Repartition des emission de CO2")
+            ax.set(xlabel=None)
+            ax.set_ylabel('gCOEe')
+            st.pyplot(barplot_2)
 elif analysis == "Bilan Carbone - Comparatifs":
     st.header("Bilan Carbone - Comparatifs")
     st.markdown("""---""")
