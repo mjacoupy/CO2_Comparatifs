@@ -121,7 +121,7 @@ if analysis == "Consommation d'une page web":
         network = st.radio("Type de réseau", ['WIFI', 'Ethernet', "Mobile"])
     with col3:
         loc = st.radio("Lieu de travail", ['France', 'Europe', 'Allemagne', 'Monde', 'USA', 'Chine'])
-        value = st.radio("Source de données", ["1-byte-model", "Articles de recherche 2020-21"])
+        value = st.radio("Source de données", ["1-byte-model", "Research Papers 2020-21"])
         if value == "1-byte-model":
             CONSO_WIFI = CONSO_WIFI1
             CONSO_DC_WORLD = CONSO_DC_WORLD1
@@ -220,7 +220,7 @@ elif analysis == "Comparatifs":
     with col2:
         color2 = st.color_picker("Hardware", '#fcba28')
     with col4:
-        value = st.radio("Source de données", ["1-byte-model", "Articles de recherche 2020-21"])
+        value = st.radio("Source de données", ["1-byte-model", "Research Papers 2020-21"])
         if value == "1-byte-model":
             CONSO_WIFI = CONSO_WIFI1
             CONSO_DC_WORLD = CONSO_DC_WORLD1
