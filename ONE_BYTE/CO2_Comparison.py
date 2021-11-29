@@ -138,7 +138,7 @@ if analysis == "Consommation d'une page web":
         if network == "Ethernet":
             conso_network = CONSO_ETHERNET
         elif network == "WIFI":
-            conso_network = CONSO_WIFI1
+            conso_network = CONSO_WIFI
         elif network == "Mobile":
             conso_network = CONSO_MOBILE
 
