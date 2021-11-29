@@ -248,6 +248,8 @@ elif analysis == "Bilan Carbone - Comparatifs":
         st.markdown('**FIXE PUISSANT + ECRAN 24"**')
     with col4:
         st.markdown('**SMARTPHONE >5,5"**')
+    with col5:
+        st.markdown('**Bilan Carbone**')
 
 
     col0, col1, col2, col3, col4, col5, col6 = st.columns(7)
