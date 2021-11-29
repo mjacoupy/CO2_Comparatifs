@@ -164,9 +164,9 @@ if analysis == "Consommation d'une page web":
 
         # Metrics
         col1, col2 = st.columns(2)
-        with col1:
-            st.metric(label="Bilan Carbone", value=str(round(bilan, 3))+" gCO2e", delta=0)
         with col2:
+            st.metric(label="Emprinte Carbone", value=str(round(bilan, 3))+" gCO2e", delta=0)
+        with col1:
             st.metric(label="Consommation électrique", value=str(round(consommation_totale, 3))+" kWh", delta=0)
 
         # Plots
@@ -199,7 +199,7 @@ if analysis == "Consommation d'une page web":
 
 
 elif analysis == "Comparatifs":
-    st.header("Comparatifs")
+    st.header("Bilan Carbone - Comparatifs")
     st.markdown("""---""")
 
     col1, col2 = st.columns(2)
