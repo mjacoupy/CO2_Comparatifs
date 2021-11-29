@@ -104,7 +104,7 @@ base_conso2 = Image.open("app_logos/Conso2.png")
 
 st.sidebar.image(image2, width=200)
 
-analysis = st.sidebar.selectbox('', ["Consommation d'une page web", "Comparatifs"])
+analysis = st.sidebar.selectbox('', ["Consommation d'une page web", "Bilan Carbone - Comparatifs"])
 side_bar()
 st.title("1-byte-model")
 
@@ -198,7 +198,7 @@ if analysis == "Consommation d'une page web":
             st.pyplot(barplot_1)
 
 
-elif analysis == "Comparatifs":
+elif analysis == "Bilan Carbone - Comparatifs":
     st.header("Bilan Carbone - Comparatifs")
     st.markdown("""---""")
 
