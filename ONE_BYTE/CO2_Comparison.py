@@ -286,7 +286,7 @@ elif analysis == "Bilan Carbone - Comparatifs":
             ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
                               rotation=60, fontsize=15, horizontalalignment="right")
             ax.set(xlabel=None)
-            ax.set_ylabel('KgCO2e')
+            ax.set_ylabel('kgCO2e')
             st.pyplot(barplot)
 
 
