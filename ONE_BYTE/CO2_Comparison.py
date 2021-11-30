@@ -280,7 +280,7 @@ elif analysis == "Bilan Carbone - Comparatifs":
                 iList.append(((datacenter+reseau+device_tel) * iRatio / 1000) + (iProduct/life_time))
     with col5:
         for iVal in values:
-            names = ['LAPTOP SEUL', '2', '3', '4']
+            names = ['1', '2', '3', '4']
             barplot = plt.figure(figsize=(3.6, 4))
             ax = sns.barplot(names, iVal, palette='viridis')
             ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
