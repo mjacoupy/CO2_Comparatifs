@@ -260,8 +260,6 @@ elif analysis == "Bilan Carbone - Comparatifs":
         with iCol:
             for iRatio in ratios:
                 sizes = camembert(iRatio, datacenter, reseau, device_ordi, iProduct, color1, color2)
-
-
     with col4:
         for iRatio in ratios:
             sizes = camembert(iRatio, datacenter, reseau, device_tel, FABRICATION_SMARTPHONE, color1, color2)
@@ -272,25 +270,31 @@ elif analysis == "Bilan Carbone - Comparatifs":
     values_ter = []
     values_usa = []
     values_chi = []
+    values = [values_fra, values_eur, values_all, values_ter, values_usa, values_chi]
     for iProduct in fabrications:
         if iProduct != FABRICATION_SMARTPHONE:
-            values_fra.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_FRANCE / 1000) + (iProduct/life_time))
-            values_eur.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_EUROPE / 1000) + (iProduct/life_time))
-            values_all.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_ALLEMAGNE / 1000) + (iProduct/life_time))
-            values_ter.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_WORLD / 1000) + (iProduct/life_time))
-            values_usa.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_USA / 1000) + (iProduct/life_time))
-            values_chi.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_CHINE / 1000) + (iProduct/life_time))
+            for iList, iRatio in zip(values, ratios):
+                iList.append(((datacenter+reseau+device_ordi) * iRatio / 1000) + (iProduct/life_time))
+#            values_fra.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_FRANCE / 1000) + (iProduct/life_time))
+#            values_eur.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_EUROPE / 1000) + (iProduct/life_time))
+#            values_all.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_ALLEMAGNE / 1000) + (iProduct/life_time))
+#            values_ter.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_WORLD / 1000) + (iProduct/life_time))
+#            values_usa.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_USA / 1000) + (iProduct/life_time))
+#            values_chi.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_CHINE / 1000) + (iProduct/life_time))
         else:
-            values_fra.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_FRANCE / 1000) + (iProduct/life_time))
-            values_eur.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_EUROPE / 1000) + (iProduct/life_time))
-            values_all.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_ALLEMAGNE / 1000) + (iProduct/life_time))
-            values_ter.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_WORLD / 1000) + (iProduct/life_time))
-            values_usa.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_USA / 1000) + (iProduct/life_time))
-            values_chi.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_CHINE / 1000) + (iProduct/life_time))
+            for iList, iRatio in zip(values, ratios):
+                iList.append(((datacenter+reseau+device_tel) * iRatio / 1000) + (iProduct/life_time))
+
+#            values_fra.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_FRANCE / 1000) + (iProduct/life_time))
+#            values_eur.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_EUROPE / 1000) + (iProduct/life_time))
+#            values_all.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_ALLEMAGNE / 1000) + (iProduct/life_time))
+#            values_ter.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_WORLD / 1000) + (iProduct/life_time))
+#            values_usa.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_USA / 1000) + (iProduct/life_time))
+#            values_chi.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_CHINE / 1000) + (iProduct/life_time))
 
 
     with col5:
-        for iVal in [values_fra, values_eur, values_all, values_ter, values_usa, values_chi]:
+        for iVal in values:
             names = ['1', '2', '3', '4']
             barplot = plt.figure(figsize=(3.6, 4))
             ax = sns.barplot(names, iVal, palette='viridis')
