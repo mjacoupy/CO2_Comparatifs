@@ -252,7 +252,8 @@ elif analysis == "Bilan Carbone - Comparatifs":
         st.markdown('**BILAN CARBONE**')
 
 
-    col0, col1, col2, col3, col4, col5 = st.columns(6)
+    col0, col1, col2, col3, col4, col5 = st.columns([1, 3, 3, 3, 3, 3])
+
     with col0:
         for iRegion in [france, europe, allemagne, terre, usa, chine]:
             st.image(iRegion)
