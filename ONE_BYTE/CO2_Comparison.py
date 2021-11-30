@@ -275,27 +275,12 @@ elif analysis == "Bilan Carbone - Comparatifs":
         if iProduct != FABRICATION_SMARTPHONE:
             for iList, iRatio in zip(values, ratios):
                 iList.append(((datacenter+reseau+device_ordi) * iRatio / 1000) + (iProduct/life_time))
-#            values_fra.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_FRANCE / 1000) + (iProduct/life_time))
-#            values_eur.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_EUROPE / 1000) + (iProduct/life_time))
-#            values_all.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_ALLEMAGNE / 1000) + (iProduct/life_time))
-#            values_ter.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_WORLD / 1000) + (iProduct/life_time))
-#            values_usa.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_USA / 1000) + (iProduct/life_time))
-#            values_chi.append(((datacenter+reseau+device_ordi) * RATIO_GCO2_KWH_CHINE / 1000) + (iProduct/life_time))
         else:
             for iList, iRatio in zip(values, ratios):
                 iList.append(((datacenter+reseau+device_tel) * iRatio / 1000) + (iProduct/life_time))
-
-#            values_fra.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_FRANCE / 1000) + (iProduct/life_time))
-#            values_eur.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_EUROPE / 1000) + (iProduct/life_time))
-#            values_all.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_ALLEMAGNE / 1000) + (iProduct/life_time))
-#            values_ter.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_WORLD / 1000) + (iProduct/life_time))
-#            values_usa.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_USA / 1000) + (iProduct/life_time))
-#            values_chi.append(((datacenter+reseau+device_tel) * RATIO_GCO2_KWH_CHINE / 1000) + (iProduct/life_time))
-
-
     with col5:
         for iVal in values:
-            names = ['1', '2', '3', '4']
+            names = ['LAPTOP SEUL', '2', '3', '4']
             barplot = plt.figure(figsize=(3.6, 4))
             ax = sns.barplot(names, iVal, palette='viridis')
             ax.set_xticklabels(labels=[textwrap.fill(iLabel, 25) for iLabel in names],
