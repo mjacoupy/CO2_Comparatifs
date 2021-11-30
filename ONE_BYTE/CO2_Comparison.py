@@ -239,7 +239,7 @@ elif analysis == "Bilan Carbone - Comparatifs":
     device_ordi = CONSO_LAPTOP * MINUTES_PAR_JOUR * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
     device_tel = CONSO_SMARTPHONE * MINUTES_PAR_JOUR * JOURS_PAR_SEMAINE * SEMAINE_PAR_AN
 
-    col0, col1, col2, col3, col4, col5 = st.columns(6)
+    col0, col1, col2, col3, col4, col5 = st.columns([1, 3, 3, 3, 3, 3])
     with col1:
         st.markdown("[1] **LAPTOP SEUL**")
     with col2:
