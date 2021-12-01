@@ -12,7 +12,11 @@ import textwrap
 #                                              # === FUNCTIONS === #
 # #######################################################################################################################
 def side_bar():
-    """..."""
+    """Display a side bar for streamlit.
+
+    :param onglet: onglet name
+    :type onglet: str
+    """
     end = '<p style="font-family:Avenir; font-weight:bold; color:#FCBA28; font-size:12px; ">©2021 Positive Thinking Company et/ou ses affiliés. Tous droits réservés. Produit par le PTC Tech Lab.</p>'
     st.sidebar.markdown("""---""")
     st.sidebar.image(image1, width=50)
@@ -20,7 +24,23 @@ def side_bar():
 
 
 def camembert(iratio, datacenter, reseau, device, appareil, color1, color2):
-    """..."""
+    """Display a pie.
+
+    :param iratio: RATIO_GCO2_KWH
+    :type iratio: int
+    :param datacenter: datacenter consumption
+    :type datacenter: int
+    :param reseau: network consumption
+    :type reseau: int
+    :param device: device consumption
+    :type device: int
+    :param appareil: devide type
+    :type appareil: str
+    :param color1: color 1
+    :type color1: str
+    :param color2: color 2
+    :type color2: str
+    """
     pie = plt.figure(figsize=(4, 4))
     bilan_conso = round((datacenter+reseau+device) * iratio / 1000, 1)
     sizes = [bilan_conso, round(appareil/life_time, 1)]
