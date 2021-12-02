@@ -13,9 +13,6 @@ import textwrap
 # #######################################################################################################################
 def side_bar():
     """Display a side bar for streamlit.
-
-    :param onglet: onglet name
-    :type onglet: str
     """
     end = '<p style="font-family:Avenir; font-weight:bold; color:#FCBA28; font-size:12px; ">©2021 Positive Thinking Company et/ou ses affiliés. Tous droits réservés. Produit par le PTC Tech Lab.</p>'
     st.sidebar.markdown("""---""")
@@ -279,10 +276,10 @@ elif analysis == "Bilan Carbone - Comparatifs":
     for iCol, iProduct in zip([col1, col2, col3], [FABRICATION_LAPTOP, FABRICATION_LAPTOP_ECRAN, FABRICATION_FIXE_PUISSANT_ECRAN24]):
         with iCol:
             for iRatio in ratios:
-                sizes = camembert(iRatio, datacenter, reseau, device_ordi, iProduct, color1, color2)
+                camembert(iRatio, datacenter, reseau, device_ordi, iProduct, color1, color2)
     with col4:
         for iRatio in ratios:
-            sizes = camembert(iRatio, datacenter, reseau, device_tel, FABRICATION_SMARTPHONE, color1, color2)
+            camembert(iRatio, datacenter, reseau, device_tel, FABRICATION_SMARTPHONE, color1, color2)
 
     values_fra = []
     values_eur = []
